@@ -30,7 +30,7 @@ namespace test1
         private Image[] ImageArray;
         private void OpenConnection()
         {
-            connstr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\buigia\Documents\GitHub\Green-ICT-Application\Green-ICT-Application--master\test1\database\DatabaseGreenICT.mdb";
+            connstr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\database\DatabaseGreenICT.mdb";
             //OleDbConnection requires namespace System.Data.OleDb
             myConnection = new OleDbConnection(connstr);
             myConnection.Open();
