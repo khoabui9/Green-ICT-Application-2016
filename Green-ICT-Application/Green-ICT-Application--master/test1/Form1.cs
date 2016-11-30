@@ -27,6 +27,10 @@ namespace test1
         PictureBox secondClicked = null;
         bool WithOutLog;
         Regex rgx = new Regex(@"^[a-zA-Z0-9]+$");
+        int score1 = 0;
+        int score2 = 0;
+        bool player1Playing = true;
+        bool player2Playing = false;
         public Form1()
         {
             InitializeComponent();
@@ -55,10 +59,10 @@ namespace test1
             comboBox4.SelectedItem = "Choose Name";
 
         }
-        
+
         private void AssignPhoto()
         {
-            
+
             Random random = new Random();
             foreach (Control control in tableLayoutPanel9.Controls)
             {
@@ -76,7 +80,7 @@ namespace test1
 
         private void button1_Click(object sender, EventArgs e) //login
         {
-           
+
             WithOutLog = false;
             panel14.Visible = false;
             bool check = game.UserLogin(textBox1.Text, textBox2.Text);
@@ -95,8 +99,8 @@ namespace test1
 
         private void button4_Click(object sender, EventArgs e) //register
         {
-           
-            if (textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "" )
+
+            if (textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
             {
                 bool check = game.UserRegister(textBox3.Text, textBox4.Text, textBox5.Text);
                 if (check != false && rgx.IsMatch(textBox3.Text.Trim()) && rgx.IsMatch(textBox4.Text.Trim()))
@@ -108,7 +112,7 @@ namespace test1
                     textBox1.Text = "";
                     textBox2.Text = "";
                 }
-               
+
             }
             else
                 MessageBox.Show("invalid input");
@@ -184,7 +188,7 @@ namespace test1
         {
             panel9.Visible = false;
             if (WithOutLog)
-            panel14.Visible = true;
+                panel14.Visible = true;
         }
 
         private void button9_Click(object sender, EventArgs e) //1 player play
@@ -234,7 +238,7 @@ namespace test1
 
         private void button8_Click(object sender, EventArgs e) //2 players play
         {
-           
+
             int i = comboBox1.SelectedIndex;
             string a = comboBox1.GetItemText(comboBox1.SelectedItem);
             if (a != "Choose Name")
@@ -279,10 +283,10 @@ namespace test1
                 }
                 else
                 {
-                    MessageBox.Show("Enter name or choose name");  
+                    MessageBox.Show("Enter name or choose name");
                 }
             }
-        
+
         }
 
         private void button11_Click(object sender, EventArgs e) //without login 2 players play
@@ -474,43 +478,73 @@ namespace test1
                 // If the player clicked two matching icons, keep them 
                 // Image null and reset firstClicked and secondClicked  to null
                 // so the player can click another icon
-               
-                
+
+
                 // If the player gets this far, the player 
                 // clicked two different picturebox, so start the 
                 // timer (which will wait a second, and then hide)             
                 timer1.Start();
-                
+
             }
-            
+
         }
-       
+
         private void timer1_click(object sender, EventArgs e)
         {
             timer1.Stop();
+
+
+
             //Stop the timer
-            if (firstClicked.BackgroundImage == secondClicked.BackgroundImage)
+            if (player1Playing)
             {
-                secondClicked.BackgroundImage = null;
-                firstClicked.BackgroundImage = null;
-
-                firstClicked = null;
-                secondClicked = null;
-
-
-                return;
+                if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
+                {
+                    secondClicked.BackgroundImage = null;
+                    firstClicked.BackgroundImage = null;
+                    firstClicked = null;
+                    secondClicked = null;
+                    score1 += 1;
+                    label26.Text = score1.ToString();
+                    return;
+                }
+                else
+                { // Hide both picImage
+                    firstClicked.Image = Properties.Resources.logo;
+                    secondClicked.Image = Properties.Resources.logo;
+                    player1Playing = false;
+                    player2Playing = true;
+                    MessageBox.Show("Player1 missed!\nPlayer2's turn!");
+                }
             }
-            // Hide both picImage
-            firstClicked.Image = Properties.Resources.logo;
-            secondClicked.Image = Properties.Resources.logo;
-
+            else
+            {
+                if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player2Playing)
+                {
+                    secondClicked.BackgroundImage = null;
+                    firstClicked.BackgroundImage = null;
+                    firstClicked = null;
+                    secondClicked = null;
+                    score2 += 1;
+                    label30.Text = score2.ToString();
+                    return;
+                }
+                else
+                { // Hide both picImage
+                    firstClicked.Image = Properties.Resources.logo;
+                    secondClicked.Image = Properties.Resources.logo;
+                    player2Playing = false;
+                    player1Playing = true;
+                    MessageBox.Show("Player2 missed!\nPlayer1's turn!");
+                }
+            }
             // Reset firstClicked and secondClicked 
             // so the next time a pictureBox is
             // clicked, the program knows it's the first click       
             firstClicked = null;
             secondClicked = null;
-           
-            
+
+
         }
 
         private void panel13_click(object sender, EventArgs e)
@@ -585,13 +619,13 @@ namespace test1
                     else
                         MessageBox.Show("Test");
                 }
-                
+
                 else
                 {
                     MessageBox.Show("Enter name or choose name");
                 }
             }
-           
+
         }
 
         private void button15_Click(object sender, EventArgs e) //withoutlogin upload
@@ -618,7 +652,7 @@ namespace test1
                 else
                     MessageBox.Show("Choose another username");
             }
-            
+
         }
 
         private void button16_Click(object sender, EventArgs e) //add player
@@ -636,6 +670,16 @@ namespace test1
             {
                 MessageBox.Show("Enter Name");
             }
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label29_Click(object sender, EventArgs e)
+        {
+            Player player2 = new Player(label29.Text);
         }
     }
 }

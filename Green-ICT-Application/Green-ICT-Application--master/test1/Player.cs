@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,18 +9,22 @@ namespace test1
 {
     public class Player
     {
-        
+
         private string name;
         private string userName;
         private string passWord;
 
-        public Player( string getUsername, string getPassword) 
+        public Player(string getUsername, string getPassword)
         {
             //name = getName;
             userName = getUsername;
             passWord = getPassword;
-            
-        } 
+
+        }
+        public Player(string getUsername)
+        {
+            this.userName = getUsername;
+        }
         public void AddName(string getName)
         {
             name = getName;
