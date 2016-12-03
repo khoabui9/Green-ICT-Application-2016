@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button13 = new System.Windows.Forms.Button();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -45,7 +44,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.button16 = new System.Windows.Forms.Button();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.label33 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
@@ -56,19 +54,12 @@
             this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.radioButton11 = new System.Windows.Forms.RadioButton();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.panel14 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.panel13 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label20 = new System.Windows.Forms.Label();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -87,18 +78,12 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label21 = new System.Windows.Forms.Label();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label22 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -108,11 +93,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -121,9 +103,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -132,6 +111,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
@@ -152,8 +132,29 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button16 = new System.Windows.Forms.Button();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -196,6 +197,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -209,18 +211,6 @@
             this.panel2.Size = new System.Drawing.Size(1063, 83);
             this.panel2.TabIndex = 1;
             this.panel2.Visible = false;
-            // 
-            // button13
-            // 
-            this.button13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button13.BackgroundImage = global::test1.Properties.Resources.PLAY;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button13.Location = new System.Drawing.Point(480, 34);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(102, 40);
-            this.button13.TabIndex = 2;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // tableLayoutPanel11
             // 
@@ -257,9 +247,9 @@
             this.label29.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(130, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(57, 25);
+            this.label29.Size = new System.Drawing.Size(42, 25);
             this.label29.TabIndex = 5;
-            this.label29.Text = "label29";
+            this.label29.Text = "None";
             // 
             // label30
             // 
@@ -267,9 +257,9 @@
             this.label30.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(130, 38);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(57, 25);
+            this.label30.Size = new System.Drawing.Size(21, 25);
             this.label30.TabIndex = 6;
-            this.label30.Text = "label30";
+            this.label30.Text = "0";
             // 
             // label28
             // 
@@ -315,9 +305,9 @@
             this.label25.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(130, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(57, 25);
+            this.label25.Size = new System.Drawing.Size(42, 25);
             this.label25.TabIndex = 3;
-            this.label25.Text = "label25";
+            this.label25.Text = "None";
             // 
             // label24
             // 
@@ -335,9 +325,9 @@
             this.label26.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(130, 38);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(57, 25);
+            this.label26.Size = new System.Drawing.Size(21, 25);
             this.label26.TabIndex = 4;
-            this.label26.Text = "label26";
+            this.label26.Text = "0";
             // 
             // panel3
             // 
@@ -373,7 +363,6 @@
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.button16);
             this.panel15.Controls.Add(this.tableLayoutPanel13);
             this.panel15.Controls.Add(this.tableLayoutPanel12);
             this.panel15.Controls.Add(this.panel16);
@@ -386,27 +375,16 @@
             this.panel15.TabIndex = 17;
             this.panel15.Visible = false;
             // 
-            // button16
-            // 
-            this.button16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button16.Location = new System.Drawing.Point(466, 321);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(128, 56);
-            this.button16.TabIndex = 18;
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
             // tableLayoutPanel13
             // 
             this.tableLayoutPanel13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel13.ColumnCount = 2;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.46154F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.53846F));
+            this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 1, 1);
             this.tableLayoutPanel13.Controls.Add(this.label33, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.comboBox4, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.label34, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.textBox9, 1, 1);
             this.tableLayoutPanel13.Location = new System.Drawing.Point(307, 110);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 2;
@@ -454,9 +432,9 @@
             // 
             this.textBox9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBox9.Font = new System.Drawing.Font("Agency FB", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(175, 96);
+            this.textBox9.Location = new System.Drawing.Point(3, 6);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(266, 39);
+            this.textBox9.Size = new System.Drawing.Size(168, 39);
             this.textBox9.TabIndex = 5;
             // 
             // tableLayoutPanel12
@@ -528,53 +506,6 @@
             this.radioButton12.Text = "30 (5 x 6)";
             this.radioButton12.UseVisualStyleBackColor = true;
             // 
-            // panel16
-            // 
-            this.panel16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel16.BackgroundImage = global::test1.Properties.Resources.BACK;
-            this.panel16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel16.Location = new System.Drawing.Point(501, 440);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(74, 39);
-            this.panel16.TabIndex = 15;
-            this.panel16.Click += new System.EventHandler(this.panel16_click);
-            // 
-            // button14
-            // 
-            this.button14.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button14.BackgroundImage = global::test1.Properties.Resources.PLAY;
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button14.Location = new System.Drawing.Point(538, 378);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(128, 56);
-            this.button14.TabIndex = 14;
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button15
-            // 
-            this.button15.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button15.BackgroundImage = global::test1.Properties.Resources.upload;
-            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button15.Location = new System.Drawing.Point(404, 378);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(128, 56);
-            this.button15.TabIndex = 13;
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // panel14
-            // 
-            this.panel14.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel14.BackgroundImage = global::test1.Properties.Resources.BACK;
-            this.panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel14.Location = new System.Drawing.Point(497, 261);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(74, 39);
-            this.panel14.TabIndex = 16;
-            this.panel14.Visible = false;
-            this.panel14.Click += new System.EventHandler(this.panel14_click);
-            // 
             // panel11
             // 
             this.panel11.Controls.Add(this.panel13);
@@ -589,17 +520,6 @@
             this.panel11.Size = new System.Drawing.Size(1063, 486);
             this.panel11.TabIndex = 3;
             this.panel11.Visible = false;
-            // 
-            // panel13
-            // 
-            this.panel13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel13.BackgroundImage = global::test1.Properties.Resources.BACK;
-            this.panel13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel13.Location = new System.Drawing.Point(497, 403);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(74, 39);
-            this.panel13.TabIndex = 13;
-            this.panel13.Click += new System.EventHandler(this.panel13_click);
             // 
             // tableLayoutPanel6
             // 
@@ -669,30 +589,6 @@
             this.radioButton9.TabStop = true;
             this.radioButton9.Text = "30 (5 x 6)";
             this.radioButton9.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button11.BackgroundImage = global::test1.Properties.Resources.PLAY;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button11.Location = new System.Drawing.Point(541, 342);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(128, 56);
-            this.button11.TabIndex = 11;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button12
-            // 
-            this.button12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button12.BackgroundImage = global::test1.Properties.Resources.upload;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button12.Location = new System.Drawing.Point(394, 342);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(128, 56);
-            this.button12.TabIndex = 10;
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -926,41 +822,6 @@
             this.radioButton3.Text = "30 (5 x 6)";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // panel10
-            // 
-            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel10.BackgroundImage = global::test1.Properties.Resources.BACK;
-            this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel10.Location = new System.Drawing.Point(501, 283);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(74, 39);
-            this.panel10.TabIndex = 11;
-            this.panel10.Click += new System.EventHandler(this.panel10_click);
-            // 
-            // button9
-            // 
-            this.button9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button9.BackgroundImage = global::test1.Properties.Resources.PLAY;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button9.Location = new System.Drawing.Point(538, 221);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(128, 56);
-            this.button9.TabIndex = 10;
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button10
-            // 
-            this.button10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button10.BackgroundImage = global::test1.Properties.Resources.upload;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(404, 221);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(128, 56);
-            this.button10.TabIndex = 9;
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.tableLayoutPanel7);
@@ -1044,41 +905,6 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "30 (5 x 6)";
             this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // panel8
-            // 
-            this.panel8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel8.BackgroundImage = global::test1.Properties.Resources.BACK;
-            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel8.Location = new System.Drawing.Point(508, 429);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(74, 39);
-            this.panel8.TabIndex = 13;
-            this.panel8.Click += new System.EventHandler(this.panel8_Click);
-            // 
-            // button8
-            // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button8.BackgroundImage = global::test1.Properties.Resources.PLAY;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button8.Location = new System.Drawing.Point(545, 367);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(128, 56);
-            this.button8.TabIndex = 12;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button7
-            // 
-            this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button7.BackgroundImage = global::test1.Properties.Resources.upload;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.Location = new System.Drawing.Point(411, 367);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(128, 56);
-            this.button7.TabIndex = 11;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -1193,30 +1019,6 @@
             this.label8.TabIndex = 9;
             this.label8.Text = "GAME SETTING";
             // 
-            // button5
-            // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.BackgroundImage = global::test1.Properties.Resources._1_player;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(460, 169);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(140, 39);
-            this.button5.TabIndex = 3;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.BackgroundImage = global::test1.Properties.Resources._2_players;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Location = new System.Drawing.Point(460, 217);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(140, 39);
-            this.button6.TabIndex = 1;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1239,17 +1041,6 @@
             this.panel4.Size = new System.Drawing.Size(1063, 486);
             this.panel4.TabIndex = 7;
             this.panel4.Visible = false;
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.BackgroundImage = global::test1.Properties.Resources.BACK;
-            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel5.Location = new System.Drawing.Point(497, 417);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(74, 39);
-            this.panel5.TabIndex = 2;
-            this.panel5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_click);
             // 
             // button4
             // 
@@ -1348,42 +1139,6 @@
             this.textBox5.Size = new System.Drawing.Size(343, 42);
             this.textBox5.TabIndex = 4;
             this.textBox5.UseSystemPasswordChar = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackgroundImage = global::test1.Properties.Resources.PLAY_WITHOUT_LOGIN;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Location = new System.Drawing.Point(374, 393);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(322, 42);
-            this.button3.TabIndex = 6;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackgroundImage = global::test1.Properties.Resources.REGISTER;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(538, 345);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 42);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackgroundImage = global::test1.Properties.Resources.SIGN_IN;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(374, 345);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 42);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -1508,6 +1263,11 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(997, 475);
             this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_click);
             // 
             // pictureBox20
             // 
@@ -1769,10 +1529,252 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.Picturebox_click);
             // 
-            // timer1
+            // button16
             // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_click);
+            this.button16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button16.BackgroundImage = global::test1.Properties.Resources.ADD;
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button16.Location = new System.Drawing.Point(177, 3);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(91, 45);
+            this.button16.TabIndex = 18;
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // panel16
+            // 
+            this.panel16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel16.BackgroundImage = global::test1.Properties.Resources.BACK;
+            this.panel16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel16.Location = new System.Drawing.Point(501, 440);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(74, 39);
+            this.panel16.TabIndex = 15;
+            this.panel16.Click += new System.EventHandler(this.panel16_click);
+            // 
+            // button14
+            // 
+            this.button14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button14.BackgroundImage = global::test1.Properties.Resources.PLAY;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button14.Location = new System.Drawing.Point(538, 378);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(128, 56);
+            this.button14.TabIndex = 14;
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button15
+            // 
+            this.button15.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button15.BackgroundImage = global::test1.Properties.Resources.upload;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button15.Location = new System.Drawing.Point(404, 378);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(128, 56);
+            this.button15.TabIndex = 13;
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // panel14
+            // 
+            this.panel14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel14.BackgroundImage = global::test1.Properties.Resources.BACK;
+            this.panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel14.Location = new System.Drawing.Point(497, 261);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(74, 39);
+            this.panel14.TabIndex = 16;
+            this.panel14.Visible = false;
+            this.panel14.Click += new System.EventHandler(this.panel14_click);
+            // 
+            // panel13
+            // 
+            this.panel13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel13.BackgroundImage = global::test1.Properties.Resources.BACK;
+            this.panel13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel13.Location = new System.Drawing.Point(497, 403);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(74, 39);
+            this.panel13.TabIndex = 13;
+            this.panel13.Click += new System.EventHandler(this.panel13_click);
+            // 
+            // button11
+            // 
+            this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button11.BackgroundImage = global::test1.Properties.Resources.PLAY;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button11.Location = new System.Drawing.Point(541, 342);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(128, 56);
+            this.button11.TabIndex = 11;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button12.BackgroundImage = global::test1.Properties.Resources.upload;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button12.Location = new System.Drawing.Point(394, 342);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(128, 56);
+            this.button12.TabIndex = 10;
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // panel10
+            // 
+            this.panel10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel10.BackgroundImage = global::test1.Properties.Resources.BACK;
+            this.panel10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel10.Location = new System.Drawing.Point(501, 283);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(74, 39);
+            this.panel10.TabIndex = 11;
+            this.panel10.Click += new System.EventHandler(this.panel10_click);
+            // 
+            // button9
+            // 
+            this.button9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button9.BackgroundImage = global::test1.Properties.Resources.PLAY;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button9.Location = new System.Drawing.Point(538, 221);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(128, 56);
+            this.button9.TabIndex = 10;
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button10.BackgroundImage = global::test1.Properties.Resources.upload;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button10.Location = new System.Drawing.Point(404, 221);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(128, 56);
+            this.button10.TabIndex = 9;
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel8.BackgroundImage = global::test1.Properties.Resources.BACK;
+            this.panel8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel8.Location = new System.Drawing.Point(508, 429);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(74, 39);
+            this.panel8.TabIndex = 13;
+            this.panel8.Click += new System.EventHandler(this.panel8_Click);
+            // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button8.BackgroundImage = global::test1.Properties.Resources.PLAY;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button8.Location = new System.Drawing.Point(545, 367);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(128, 56);
+            this.button8.TabIndex = 12;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button7.BackgroundImage = global::test1.Properties.Resources.upload;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button7.Location = new System.Drawing.Point(411, 367);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(128, 56);
+            this.button7.TabIndex = 11;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button5.BackgroundImage = global::test1.Properties.Resources._1_player;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button5.Location = new System.Drawing.Point(460, 169);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(140, 39);
+            this.button5.TabIndex = 3;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button6.BackgroundImage = global::test1.Properties.Resources._2_players;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button6.Location = new System.Drawing.Point(460, 217);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(140, 39);
+            this.button6.TabIndex = 1;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel5.BackgroundImage = global::test1.Properties.Resources.BACK;
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel5.Location = new System.Drawing.Point(497, 417);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(74, 39);
+            this.panel5.TabIndex = 2;
+            this.panel5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_click);
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.BackgroundImage = global::test1.Properties.Resources.PLAY_WITHOUT_LOGIN;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Location = new System.Drawing.Point(374, 393);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(322, 42);
+            this.button3.TabIndex = 6;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.BackgroundImage = global::test1.Properties.Resources.REGISTER;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(538, 345);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(158, 42);
+            this.button2.TabIndex = 5;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackgroundImage = global::test1.Properties.Resources.SIGN_IN;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(374, 345);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(158, 42);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button13
+            // 
+            this.button13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button13.BackgroundImage = global::test1.Properties.Resources.PLAY;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button13.Location = new System.Drawing.Point(480, 34);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(102, 40);
+            this.button13.TabIndex = 2;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // panel1
             // 
@@ -1783,6 +1785,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1063, 64);
             this.panel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.57565F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.42435F));
+            this.tableLayoutPanel14.Controls.Add(this.button16, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.textBox9, 0, 0);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(175, 90);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 1;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(271, 51);
+            this.tableLayoutPanel14.TabIndex = 19;
             // 
             // Form1
             // 
@@ -1854,6 +1871,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1984,6 +2003,7 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
     }
 }
 

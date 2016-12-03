@@ -140,13 +140,18 @@ namespace test1
             while (notEoF)//read row by row until the last row
             {
                 if (username == reader["Username"].ToString() || username.Trim() == reader["Username"].ToString())
-                {
-
+                {   
                     CheckUserName = true;
-                    if (PasswordHash.PasswordHash.ValidatePassword(password, reader["Password"].ToString()))
+
+                    if (reader["Password"].ToString() != "")
                     {
-                        CheckPassword = true;
+                        if (PasswordHash.PasswordHash.ValidatePassword(password, reader["Password"].ToString()))
+                        {
+                            CheckPassword = true;
+                        }
                     }
+                    else
+                        MessageBox.Show("This Username doesn't have password \n please choose or register another account");
                 }
                 notEoF = reader.Read();
             }
@@ -287,17 +292,15 @@ namespace test1
             openFile.Title = "select images";
             openFile.Filter = "JPG Files|*.jpg|JPEG Files|*.jpeg|GIF|*.gif|PNG|*.png";
             DialogResult result = openFile.ShowDialog();
-            //if (openFile.FileNames.Length > 10)
-            //{
-            //    MessageBox.Show("The maximum file allowed is 10");
-            //    return;
-            //}
-            //else
-            //{
+            if (openFile.FileNames.Length < 10)
+            {
+                MessageBox.Show("The minimum number of files allowed is 10");
+                return;
+            }
+            else
+            {
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                   
-
                     foreach (string img in openFile.FileNames)
                     {
                         byte[] FileBytes = null;
@@ -360,18 +363,19 @@ namespace test1
                         }
                     }
                 }
-            //}
+            }
         }
         
         public void AddUserName(string userName)
         {
             OpenConnection();
+            string ps = "";
             OleDbCommand cmd = new OleDbCommand();
             cmd.Connection = myConnection;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO player(Username) VALUES (@name)";
+            cmd.CommandText = "INSERT INTO player(Username, [Password]) VALUES (@name, @ps)";
             cmd.Parameters.AddWithValue("@name", userName);
-
+            cmd.Parameters.AddWithValue("@ps", ps);
             cmd.ExecuteNonQuery();
             myConnection.Close();
         }

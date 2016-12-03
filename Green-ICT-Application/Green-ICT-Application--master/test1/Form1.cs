@@ -31,6 +31,8 @@ namespace test1
         int score2 = 0;
         bool player1Playing = true;
         bool player2Playing = false;
+        bool twoPlaying = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -151,6 +153,7 @@ namespace test1
 
         private void button6_Click(object sender, EventArgs e) //2 players
         {
+            twoPlaying = true;
             panel14.Visible = false;
             tableLayoutPanel11.Visible = true;
             if (comboBox1.Items.Count == 0 && comboBox2.Items.Count == 0 && comboBox3.Items.Count == 0 && comboBox4.Items.Count == 0)
@@ -177,6 +180,7 @@ namespace test1
         private void panel8_Click(object sender, EventArgs e)
         {
             panel7.Visible = false;
+            twoPlaying = false;
         }
 
         private void button10_Click(object sender, EventArgs e) // 1 player uploads
@@ -479,7 +483,7 @@ namespace test1
                 // Image null and reset firstClicked and secondClicked  to null
                 // so the player can click another icon
 
-
+                CheckForWinner();
                 // If the player gets this far, the player 
                 // clicked two different picturebox, so start the 
                 // timer (which will wait a second, and then hide)             
@@ -494,9 +498,53 @@ namespace test1
             timer1.Stop();
 
 
-
-            //Stop the timer
-            if (player1Playing)
+            if (twoPlaying != false)
+            {
+                //Stop the timer
+                if (player1Playing)
+                {
+                    if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
+                    {
+                        secondClicked.BackgroundImage = null;
+                        firstClicked.BackgroundImage = null;
+                        firstClicked = null;
+                        secondClicked = null;
+                        score1 += 1;
+                        label26.Text = score1.ToString();
+                        return;
+                    }
+                    else
+                    { // Hide both picImage
+                        firstClicked.Image = Properties.Resources._default;
+                        secondClicked.Image = Properties.Resources._default;
+                        player1Playing = false;
+                        player2Playing = true;
+                        MessageBox.Show("Player1 missed!\nPlayer2's turn!");
+                    }
+                }
+                else
+                {
+                    if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player2Playing)
+                    {
+                        secondClicked.BackgroundImage = null;
+                        firstClicked.BackgroundImage = null;
+                        firstClicked = null;
+                        secondClicked = null;
+                        score2 += 1;
+                        label30.Text = score2.ToString();
+                        return;
+                    }
+                    else
+                    { // Hide both picImage
+                        firstClicked.Image = Properties.Resources._default;
+                        secondClicked.Image = Properties.Resources._default;
+                        player2Playing = false;
+                        player1Playing = true;
+                        MessageBox.Show("Player2 missed!\nPlayer1's turn!");
+                    }
+                }
+            }
+            else
             {
                 if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
                 {
@@ -508,35 +556,10 @@ namespace test1
                     label26.Text = score1.ToString();
                     return;
                 }
-                else
-                { // Hide both picImage
-                    firstClicked.Image = Properties.Resources.logo;
-                    secondClicked.Image = Properties.Resources.logo;
-                    player1Playing = false;
-                    player2Playing = true;
-                    MessageBox.Show("Player1 missed!\nPlayer2's turn!");
-                }
-            }
-            else
-            {
-                if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player2Playing)
-                {
-                    secondClicked.BackgroundImage = null;
-                    firstClicked.BackgroundImage = null;
-                    firstClicked = null;
-                    secondClicked = null;
-                    score2 += 1;
-                    label30.Text = score2.ToString();
-                    return;
-                }
-                else
-                { // Hide both picImage
-                    firstClicked.Image = Properties.Resources.logo;
-                    secondClicked.Image = Properties.Resources.logo;
-                    player2Playing = false;
-                    player1Playing = true;
-                    MessageBox.Show("Player2 missed!\nPlayer1's turn!");
-                }
+               
+                    firstClicked.Image = Properties.Resources._default;
+                    secondClicked.Image = Properties.Resources._default;
+                
             }
             // Reset firstClicked and secondClicked 
             // so the next time a pictureBox is
@@ -549,6 +572,7 @@ namespace test1
 
         private void panel13_click(object sender, EventArgs e)
         {
+            twoPlaying = false;
             panel11.Visible = false;
             if (WithOutLog)
                 panel14.Visible = true;
@@ -625,7 +649,7 @@ namespace test1
                     MessageBox.Show("Enter name or choose name");
                 }
             }
-
+            label25.Text = a.ToUpper();
         }
 
         private void button15_Click(object sender, EventArgs e) //withoutlogin upload
@@ -681,5 +705,29 @@ namespace test1
         {
             Player player2 = new Player(label29.Text);
         }
+
+        private void CheckForWinner()
+        {
+            // Go through all of the labels in the TableLayoutPanel, 
+            // checking each one to see if its icon is matched
+            foreach (Control control in tableLayoutPanel9.Controls)
+            {
+                PictureBox a = control as PictureBox;
+
+                if (a != null)
+                {
+                  
+                        return;
+                }
+            }
+
+            // If the loop didn’t return, it didn't find
+            // any unmatched icons
+            // That means the user won. Show a message and close the form
+            MessageBox.Show("You matched all the icons!", "Congratulations");
+            Close();
+        }
+
+
     }
 }
