@@ -32,6 +32,8 @@ namespace test1
         bool player1Playing = true;
         bool player2Playing = false;
         bool twoPlaying = false;
+        bool player1Scored = false;
+        bool player2Scored = false;
 
         public Form1()
         {
@@ -209,7 +211,7 @@ namespace test1
                 panel12.Visible = true;
             }
             else
-                MessageBox.Show("upload di dmm");
+                MessageBox.Show("Please upload at least 10 images");
         }
 
         private void button12_Click(object sender, EventArgs e) //upload
@@ -505,6 +507,7 @@ namespace test1
                 {
                     if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
                     {
+                        player1Scored = true;
                         secondClicked.BackgroundImage = null;
                         firstClicked.BackgroundImage = null;
                         firstClicked = null;
@@ -716,7 +719,6 @@ namespace test1
 
                 if (a != null)
                 {
-                  
                         return;
                 }
             }

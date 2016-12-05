@@ -19,11 +19,15 @@ namespace test1
 {
     public  class Game
     {
-        Player player;
+        GameObject gameObject;
+        Player player1;
+        Player player2;
+        Player[] players = new Player[1];
         DatabaseFunction data;
         List<Image> images = new List<Image>();
         List<string> PlayerNameList = new List<string>();
-
+        List<Image> player1Collection = new List<Image>();
+        List<Image> player2Collection = new List<Image>();
         public Game()
         {
             data = new DatabaseFunction();
@@ -31,7 +35,7 @@ namespace test1
 
         public bool UserLogin(string username, string password)
         {
-           player = new Player(username, password);
+           player1 = new Player(username, password);
            bool check = data.UserAuthentiacation(username, password);
             if (check != false)
                 return true;
@@ -63,12 +67,12 @@ namespace test1
         }
         public void SetObject()
         {
-            string rePlayer = player.GetPlayer();
+            string rePlayer = player1.GetPlayer();
             data.Upload(data.GetPlayerID(rePlayer));
         }
         public bool AssignObject()
         {
-            string rePlayer = player.GetPlayer();
+            string rePlayer = player1.GetPlayer();
             bool check = data.GetObject(data.GetPlayerID(rePlayer));
             if (check != false)
             {
@@ -80,6 +84,7 @@ namespace test1
         public List<Image> ReList()
         { 
             images = data.RetListOfObject();
+            gameObject = new GameObject(images);
             return images;
         }
         public bool withoutLoginPlay(string getplayer)
@@ -108,10 +113,29 @@ namespace test1
 
         }
 
-        public void SwitchPlayer()
+        public void AddToPlayer1Collection(Image a)
         {
-
+            player1Collection.Add(a);
         }
 
+        public void AddToPlayer2Collection(Image b)
+        {
+            player2Collection.Add(b);
+        }
+
+        public void SwitchPlayer(bool check)
+        {
+            players[0] = player1;
+            players[1] = player2;
+            if (check == true)
+            {
+
+            }
+            else
+            {
+
+            }
+
+        }
     }
 }
