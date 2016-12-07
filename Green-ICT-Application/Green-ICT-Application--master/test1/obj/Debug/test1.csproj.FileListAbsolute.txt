@@ -55,7 +55,5 @@ C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Applica
 C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\bin\Debug\test1.pdb
 C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.csprojResolveAssemblyReference.cache
 C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.Form1.resources
-C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.game_setting_allogin.resources
-C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.Game_setting.resources
 C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.Properties.Resources.resources
 C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.csproj.GenerateResource.Cache

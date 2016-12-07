@@ -56,6 +56,7 @@ namespace test1
 
         public bool AddUserName(string UserName)
         {
+            player2 = new Player(UserName);
             bool check = data.CheckValidUserName(UserName);
             if (check != false)
             {
@@ -113,6 +114,7 @@ namespace test1
 
         }
 
+
         public void AddToPlayer1Collection(Image a)
         {
             player1Collection.Add(a);
@@ -123,17 +125,17 @@ namespace test1
             player2Collection.Add(b);
         }
 
-        public void SwitchPlayer(bool check)
+        public Player SwitchPlayer(bool check)
         {
             players[0] = player1;
             players[1] = player2;
             if (check == true)
             {
-
+                return player1;
             }
             else
             {
-
+                return player2;
             }
 
         }

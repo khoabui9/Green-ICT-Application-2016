@@ -16,6 +16,7 @@ using System.Drawing.Imaging;
 
 namespace test1
 {
+
     class GameObject
     {
         List<Image> gameobject = new List<Image>();
