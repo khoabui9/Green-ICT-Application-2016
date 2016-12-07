@@ -26,6 +26,7 @@ namespace test1
         private List<Image> images = new List<Image>();
         private List<string> playerName = new List<string>();
         private List<int> playerID = new List<int>();
+       
 
         private Image[] ImageArray;
         private void OpenConnection()
@@ -212,10 +213,10 @@ namespace test1
 
         public int GetObjectID(string name, int id)
         {
+            
+            OpenConnection();
             string i;
             int a;
-            OpenConnection();
-            
             OleDbCommand cmd = new OleDbCommand();
 
             cmd.Connection = myConnection;
@@ -321,15 +322,18 @@ namespace test1
                         BR.Close();
                         //DateTime dateTaken = GetDateTakenFromImage(path);
                         //Insert into access database
-                        OpenConnection();
-                        OleDbCommand cmd1 = new OleDbCommand();
-
-                        cmd1.Connection = myConnection;
-                        cmd1.CommandType = CommandType.Text;
-                        cmd1.CommandText = "INSERT INTO GameObject(filetype ,ObjectName, path,[binarydata], DayAdded, ref_player_id) VALUES (@fileType,@fname, @path, @FileBytes, @now, @playerid)";
+                      
                         bool checkObject = CheckObjectExist(fname, playerid);
                         if (checkObject != false)
                         {
+                            OpenConnection();
+                           
+                            OleDbCommand cmd1 = new OleDbCommand();
+
+                            cmd1.Connection = myConnection;
+                            cmd1.CommandType = CommandType.Text;
+                            cmd1.CommandText = "INSERT INTO GameObject(filetype ,ObjectName, path,[binarydata], DayAdded, ref_player_id) VALUES (@fileType,@fname, @path, @FileBytes, @now, @playerid)";
+
                             cmd1.Parameters.AddWithValue("@fileType", fileType);
                             cmd1.Parameters.AddWithValue("@fname", fname);
                             cmd1.Parameters.AddWithValue("@path", path); //alter as per your requirement
@@ -348,7 +352,7 @@ namespace test1
                             //cmd.Parameters.AddWithValue("@ObjectID", ObjectID);
                             //cmd.ExecuteNonQuery();
                             //myConnection.Close();
-
+                            
                             OpenConnection();
                             int ObjectID = GetObjectID(fname, playerid);
                             OleDbCommand cmd2 = new OleDbCommand();
@@ -390,9 +394,11 @@ namespace test1
 
         public bool GetObject(int id)
         {
-            OpenConnection();
             int i = 0;
             int count = 0;
+
+            OpenConnection();
+           
             Random random = new Random();
             OleDbCommand cmd;
             cmd = new OleDbCommand("SELECT [binarydata] FROM GameObject where ref_player_id = " + @id, myConnection);

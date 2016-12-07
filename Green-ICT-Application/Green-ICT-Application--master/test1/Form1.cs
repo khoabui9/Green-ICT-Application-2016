@@ -34,7 +34,9 @@ namespace test1
         bool twoPlaying = false;
         bool player1Scored = false;
         bool player2Scored = false;
-
+        bool player1win = false;
+        bool player2Win = false;
+        
         public Form1()
         {
             InitializeComponent();
@@ -468,7 +470,6 @@ namespace test1
                 {
                     firstClicked = pic;
                     firstClicked.Image = null;
-
                     return;
                 }
                 // If the player gets this far, the timer isn't
@@ -480,11 +481,9 @@ namespace test1
                     secondClicked = pic;
                     secondClicked.Image = null;
                 }
-
                 // If the player clicked two matching icons, keep them 
                 // Image null and reset firstClicked and secondClicked  to null
                 // so the player can click another icon
-
                 CheckForWinner();
                 // If the player gets this far, the player 
                 // clicked two different picturebox, so start the 
@@ -498,22 +497,31 @@ namespace test1
         private void timer1_click(object sender, EventArgs e)
         {
             timer1.Stop();
-
+            
 
             if (twoPlaying != false)
             {
+               
                 //Stop the timer
                 if (player1Playing)
                 {
                     if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
                     {
+                       
+                       
                         player1Scored = true;
+                        game.AddToPlayer1Collection(firstClicked.BackgroundImage);
                         secondClicked.BackgroundImage = null;
                         firstClicked.BackgroundImage = null;
                         firstClicked = null;
                         secondClicked = null;
                         score1 += 1;
                         label26.Text = score1.ToString();
+                        if (score1 > score2)
+                        {
+                            player1win = true;
+                            player2Win = false;
+                        }
                         return;
                     }
                     else
@@ -529,12 +537,20 @@ namespace test1
                 {
                     if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player2Playing)
                     {
+                        player1win = false;
+                        player2Win = true;
+                        game.AddToPlayer2Collection(firstClicked.BackgroundImage);
                         secondClicked.BackgroundImage = null;
                         firstClicked.BackgroundImage = null;
                         firstClicked = null;
                         secondClicked = null;
                         score2 += 1;
                         label30.Text = score2.ToString();
+                        if (score1 < score2)
+                        {
+                            player1win = false;
+                            player2Win = true;
+                        }
                         return;
                     }
                     else
@@ -551,6 +567,7 @@ namespace test1
             {
                 if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
                 {
+                    //game.AddToPlayer1Collection(firstClicked.BackgroundImage);
                     secondClicked.BackgroundImage = null;
                     firstClicked.BackgroundImage = null;
                     firstClicked = null;
@@ -567,6 +584,8 @@ namespace test1
             // Reset firstClicked and secondClicked 
             // so the next time a pictureBox is
             // clicked, the program knows it's the first click       
+
+
             firstClicked = null;
             secondClicked = null;
 
@@ -711,14 +730,16 @@ namespace test1
 
         private void CheckForWinner()
         {
+
             // Go through all of the labels in the TableLayoutPanel, 
             // checking each one to see if its icon is matched
             foreach (Control control in tableLayoutPanel9.Controls)
             {
                 PictureBox a = control as PictureBox;
 
-                if (a != null)
+                if (a.Image != null)
                 {
+                    if (a.BackgroundImage != null)
                         return;
                 }
             }
@@ -726,10 +747,16 @@ namespace test1
             // If the loop didn’t return, it didn't find
             // any unmatched icons
             // That means the user won. Show a message and close the form
+            if (twoPlaying == false)
             MessageBox.Show("You matched all the icons!", "Congratulations");
-            Close();
+            else
+            {
+                if (player1win == true)
+                    MessageBox.Show("Player 1 win", "Congratulations");
+                else if (player2Win == true)
+                    MessageBox.Show("Player 2 win", "Congratulations");
+            }
+            
         }
-
-
     }
 }
