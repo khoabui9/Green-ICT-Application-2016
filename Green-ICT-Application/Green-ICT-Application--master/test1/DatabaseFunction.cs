@@ -427,9 +427,9 @@ namespace test1
                                 cmd2.Connection = myConnection;
                                 cmd2.CommandType = CommandType.Text;
                                 cmd2.CommandText = "INSERT INTO Metadata(Metadata_detail, ref_gameobject) VALUES (@fileName, @ObjectID)";
-                                cmd2.Parameters.AddWithValue("@fileName", fname);
+                                cmd2.Parameters.AddWithValue("@fileName", fname); //add name because have not done the add detail part
                                 cmd2.Parameters.AddWithValue("@ObjectID", ObjectID);
-                                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken);
+                                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken); //add datetaken (not all objet have)
                                 cmd2.ExecuteNonQuery();
                                 myConnection.Close();
                             }
