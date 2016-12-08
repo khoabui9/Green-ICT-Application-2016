@@ -29,12 +29,20 @@ namespace test1
        
 
         private Image[] ImageArray;
-        private void OpenConnection()
+        private bool OpenConnection()
         {
-            connstr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\database\DatabaseGreenICT.mdb";
-            //OleDbConnection requires namespace System.Data.OleDb
-            myConnection = new OleDbConnection(connstr);
-            myConnection.Open();
+            try {
+                connstr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\buigia\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\database\DatabaseGreenICT.mdb";
+                //OleDbConnection requires namespace System.Data.OleDb
+                myConnection = new OleDbConnection(connstr);
+                myConnection.Open();
+                return true;
+            }
+            catch
+            {
+                MessageBox.Show("false connection");
+                return false;
+            }
         }
 
         public List<Image> RetListOfObject()
@@ -45,136 +53,164 @@ namespace test1
         public bool CheckValidUserName(string username)
         {
             OpenConnection();
-            //Building command object
-            //OleDbCommand myCommand = new OleDbCommand();
-            //myCommand.Connection = myConnection;
-            //myCommand.CommandText = "INSERT into LOGIN(USERNAME, PASSWORD) " + "VALUES(@username, @password)";
-            OleDbCommand cmd = new OleDbCommand();
-
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM player WHERE Username = username";
-            OleDbDataReader reader = cmd.ExecuteReader();
-
-            //This method allows to control the reading of database response rows
-            bool notEoF;
-            //read first row from database
-            notEoF = reader.Read();
-            bool CheckUserName = false;
-            //bool CheckPassword = false;
-            //read row by row until the last row
-            while (notEoF)
+            if (OpenConnection() == true)
             {
-                if (username == reader["Username"].ToString())
-                {
-                    CheckUserName = true;
+                //Building command object
+                //OleDbCommand myCommand = new OleDbCommand();
+                //myCommand.Connection = myConnection;
+                //myCommand.CommandText = "INSERT into LOGIN(USERNAME, PASSWORD) " + "VALUES(@username, @password)";
+                OleDbCommand cmd = new OleDbCommand();
+
+                cmd.Connection = myConnection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM player WHERE Username = username";
+                try {
+                    OleDbDataReader reader = cmd.ExecuteReader();
+
+                    //This method allows to control the reading of database response rows
+                    bool notEoF;
+                    //read first row from database
+                    notEoF = reader.Read();
+                    bool CheckUserName = false;
+                    //bool CheckPassword = false;
+                    //read row by row until the last row
+                    while (notEoF)
+                    {
+                        if (username == reader["Username"].ToString())
+                        {
+                            CheckUserName = true;
+                        }
+                        notEoF = reader.Read();
+                    }
+                    reader.Close();
+                    if (CheckUserName)
+                    {
+                        MessageBox.Show("Someone took that username or you just added \nchoose other username");
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                    return false;
                 }
-                notEoF = reader.Read();
-            }
-            reader.Close();
-            if (CheckUserName)
-            {
-                MessageBox.Show("Someone took that username or you just added \nchoose other username");
+                catch
+                {
+                    return false;
+                }
             }
             else
-            {
-                return true;
-            }
-            return false;
+                return false;
         }
 
         public void AddPlayer(string name, string username, string password)
         {
-            OpenConnection();
-            Regex rgx = new Regex(@"^[a-zA-Z0-9]+$");
-            OleDbCommand cmd = new OleDbCommand();
-            string hashedPassword = PasswordHash.PasswordHash.CreateHash(password);
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO  player(Name , Username, [Password]) values(@name ,@username, @password);";
+            try {
+                OpenConnection();
+                Regex rgx = new Regex(@"^[a-zA-Z0-9]+$");
+                OleDbCommand cmd = new OleDbCommand();
+                string hashedPassword = PasswordHash.PasswordHash.CreateHash(password);
+                cmd.Connection = myConnection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "INSERT INTO  player(Name , Username, [Password]) values(@name ,@username, @password);";
 
-            if (rgx.IsMatch(username.Trim()) && rgx.IsMatch(name.Trim()))
-            {
-                cmd.Parameters.AddWithValue("@name", name.Trim());
-                cmd.Parameters.AddWithValue("@username", username.Trim());
-                cmd.Parameters.AddWithValue("@password", hashedPassword);
-
-                try
+                if (rgx.IsMatch(username.Trim()) && rgx.IsMatch(name.Trim()))
                 {
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Registered successful \nnow, log in");
+                    cmd.Parameters.AddWithValue("@name", name.Trim());
+                    cmd.Parameters.AddWithValue("@username", username.Trim());
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
 
-                    myConnection.Close();
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Registered successful \nnow, log in");
 
+                        myConnection.Close();
+
+                    }
+                    catch (OleDbException ex)
+                    {
+                        MessageBox.Show("Something wrong \n" + ex);
+                        myConnection.Close();
+                    }
                 }
-                catch (OleDbException ex)
+                else
                 {
-                    MessageBox.Show("Something wrong \n" + ex);
-                    myConnection.Close();
+                    MessageBox.Show("special characters are not allowed\nnow, try again");
                 }
             }
-            else
+            catch
             {
-                MessageBox.Show("special characters are not allowed\nnow, try again");
+
             }
         }
 
         public bool UserAuthentiacation(string username, string password)
         {
-            OpenConnection();
+            try {
+                OpenConnection();
+                if (OpenConnection() == true)
+                {
 
-            OleDbCommand cmd = new OleDbCommand();
-            //string hashedPassword = PasswordHash.PasswordHash.CreateHash(password);
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM player WHERE Username = username";
+                    OleDbCommand cmd = new OleDbCommand();
+                    //string hashedPassword = PasswordHash.PasswordHash.CreateHash(password);
+                    cmd.Connection = myConnection;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT * FROM player WHERE Username = username";
 
-            OleDbDataReader reader = cmd.ExecuteReader();
+                    OleDbDataReader reader = cmd.ExecuteReader();
 
-            //This method allows to control the reading of database response rows
-            bool notEoF;
-            //read first row from database
-            notEoF = reader.Read();
-            bool CheckUserName = false;
-            bool CheckPassword = false;
+                    //This method allows to control the reading of database response rows
+                    bool notEoF;
+                    //read first row from database
+                    notEoF = reader.Read();
+                    bool CheckUserName = false;
+                    bool CheckPassword = false;
 
-            while (notEoF)//read row by row until the last row
-            {
-                if (username == reader["Username"].ToString() || username.Trim() == reader["Username"].ToString())
-                {   
-                    CheckUserName = true;
-
-                    if (reader["Password"].ToString() != "")
+                    while (notEoF)//read row by row until the last row
                     {
-                        if (PasswordHash.PasswordHash.ValidatePassword(password, reader["Password"].ToString()))
+                        if (username == reader["Username"].ToString() || username.Trim() == reader["Username"].ToString())
                         {
-                            CheckPassword = true;
+                            CheckUserName = true;
+
+                            if (reader["Password"].ToString() != "")
+                            {
+                                if (PasswordHash.PasswordHash.ValidatePassword(password, reader["Password"].ToString()))
+                                {
+                                    CheckPassword = true;
+                                }
+                            }
+                            else
+                                MessageBox.Show("This Username doesn't have password \n please choose or register another account");
                         }
+                        notEoF = reader.Read();
+                    }
+                    reader.Close();
+                    if (CheckUserName && CheckPassword)
+                    {
+                        MessageBox.Show("Login successful");
+                        return true;
+                    }
+                    else if (username == "" || password == "")
+                    {
+                        MessageBox.Show("Invalid input");
+                        return false;
+                    }
+                    else if (username.Trim().Contains(" "))
+                    {
+                        MessageBox.Show("Wrong username");
+                        return false;
                     }
                     else
-                        MessageBox.Show("This Username doesn't have password \n please choose or register another account");
+                    {
+                        MessageBox.Show("Login failed \nWrong username or wrong password");
+                        return false;
+                    }
                 }
-                notEoF = reader.Read();
+                else
+                    return false;
             }
-            reader.Close();
-            if (CheckUserName && CheckPassword)
+            catch
             {
-                MessageBox.Show("Login successful");
-                return true;
-            }
-            else if (username == "" || password == "")
-            {
-                MessageBox.Show("Invalid input");
-                return false;
-            }
-            else if (username.Trim().Contains(" "))
-            {
-                MessageBox.Show("Wrong username");
-                return false;
-            }
-            else
-            {
-                MessageBox.Show("Login failed \nWrong username or wrong password");
                 return false;
             }
         }
@@ -182,112 +218,143 @@ namespace test1
 
         public int GetPlayerID(string username)
         {
-            string i;
-            int a;
-            OpenConnection();
-            OleDbCommand cmd = new OleDbCommand();
-
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * from player where Username = username";
-            OleDbDataReader reader = cmd.ExecuteReader();
-
-            //This method allows to control the reading of database response rows
-            bool notEoF;
-            //read first row from database
-            notEoF = reader.Read();
-            while (notEoF)//read row by row until the last row
-            {
-                if (username == reader["Username"].ToString())
+            try {
+                string i;
+                int a;
+                OpenConnection();
+                if (OpenConnection() == true)
                 {
-                    i = reader["Player_id"].ToString();
-                    a = Int32.Parse(i);
-                    return a;
-                }
+                    OleDbCommand cmd = new OleDbCommand();
 
-                notEoF = reader.Read();
+                    cmd.Connection = myConnection;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT * from player where Username = username";
+                    OleDbDataReader reader = cmd.ExecuteReader();
+
+                    //This method allows to control the reading of database response rows
+                    bool notEoF;
+                    //read first row from database
+                    notEoF = reader.Read();
+                    while (notEoF)//read row by row until the last row
+                    {
+                        if (username == reader["Username"].ToString())
+                        {
+                            i = reader["Player_id"].ToString();
+                            a = Int32.Parse(i);
+                            return a;
+                        }
+
+                        notEoF = reader.Read();
+                    }
+                    reader.Close();
+                    return 0;
+                }
+                else
+                    return 0;
             }
-            reader.Close();
-            return 0;
+            catch
+            {
+                return 0;
+            }
         }
 
         public int GetObjectID(string name, int id)
         {
-            
-            OpenConnection();
-            string i;
-            int a;
-            OleDbCommand cmd = new OleDbCommand();
-
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * from GameObject where ObjectName = '" + name + "' AND ref_player_id = " + @id;
-            OleDbDataReader reader = cmd.ExecuteReader();
-
-            //This method allows to control the reading of database response rows
-            bool notEoF;
-            //read first row from database
-            notEoF = reader.Read();
-            while (notEoF)//read row by row until the last row
-            {
-                if (name == reader["ObjectName"].ToString())
+            try {
+                string i;
+                int a;
+                OpenConnection();
+                if (OpenConnection() == true)
                 {
-                    i = reader["Object_id"].ToString();
-                    a = Int32.Parse(i);
-                    return a;
-                }
 
-                notEoF = reader.Read();
+                    OleDbCommand cmd = new OleDbCommand();
+
+                    cmd.Connection = myConnection;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT * from GameObject where ObjectName = '" + name + "' AND ref_player_id = " + @id;
+                    OleDbDataReader reader = cmd.ExecuteReader();
+
+                    //This method allows to control the reading of database response rows
+                    bool notEoF;
+                    //read first row from database
+                    notEoF = reader.Read();
+                    while (notEoF)//read row by row until the last row
+                    {
+                        if (name == reader["ObjectName"].ToString())
+                        {
+                            i = reader["Object_id"].ToString();
+                            a = Int32.Parse(i);
+                            return a;
+                        }
+
+                        notEoF = reader.Read();
+                    }
+                    reader.Close();
+                    return 0;
+                }
+                else
+                    return 0;
             }
-            reader.Close();
-            return 0;
+            catch
+            {
+                return 0;
+            }
         }
 
         public bool CheckObjectExist(string name, int id)
         {
-            OpenConnection();
-            //Building command object
-            //OleDbCommand myCommand = new OleDbCommand();
-            //myCommand.Connection = myConnection;
-            //myCommand.CommandText = "INSERT into LOGIN(USERNAME, PASSWORD) " + "VALUES(@username, @password)";
-            OleDbCommand cmd = new OleDbCommand();
-
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM GameObject WHERE ObjectName = '" + name + "' AND ref_player_id = " + @id;
-            OleDbDataReader reader = cmd.ExecuteReader();
-
-            //This method allows to control the reading of database response rows
-            bool notEoF;
-            //read first row from database
-            notEoF = reader.Read();
-            bool CheckObject = false;
-            //bool CheckPassword = false;
-            //read row by row until the last row
-            while (notEoF)
-            {
-                if (name == reader["ObjectName"].ToString())
+            try {
+                OpenConnection();
+                if (OpenConnection() == true)
                 {
-                    CheckObject = true;
+                    //Building command object
+                    //OleDbCommand myCommand = new OleDbCommand();
+                    //myCommand.Connection = myConnection;
+                    //myCommand.CommandText = "INSERT into LOGIN(USERNAME, PASSWORD) " + "VALUES(@username, @password)";
+                    OleDbCommand cmd = new OleDbCommand();
+
+                    cmd.Connection = myConnection;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT * FROM GameObject WHERE ObjectName = '" + name + "' AND ref_player_id = " + @id;
+                    OleDbDataReader reader = cmd.ExecuteReader();
+
+                    //This method allows to control the reading of database response rows
+                    bool notEoF;
+                    //read first row from database
+                    notEoF = reader.Read();
+                    bool CheckObject = false;
+                    //bool CheckPassword = false;
+                    //read row by row until the last row
+                    while (notEoF)
+                    {
+                        if (name == reader["ObjectName"].ToString())
+                        {
+                            CheckObject = true;
+                        }
+                        notEoF = reader.Read();
+                    }
+                    reader.Close();
+                    if (CheckObject)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
-                notEoF = reader.Read();
+                else
+                    return false;
             }
-            reader.Close();
-            if (CheckObject)
+            catch
             {
                 return false;
-            }
-            else
-            {
-                return true;
             }
            
         }
 
         public void Upload(int playerid)
         {
-
-
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Multiselect = true;
             openFile.Title = "select images";
@@ -326,44 +393,50 @@ namespace test1
                         bool checkObject = CheckObjectExist(fname, playerid);
                         if (checkObject != false)
                         {
-                            OpenConnection();
-                           
-                            OleDbCommand cmd1 = new OleDbCommand();
+                            try {
+                                OpenConnection();
 
-                            cmd1.Connection = myConnection;
-                            cmd1.CommandType = CommandType.Text;
-                            cmd1.CommandText = "INSERT INTO GameObject(filetype ,ObjectName, path,[binarydata], DayAdded, ref_player_id) VALUES (@fileType,@fname, @path, @FileBytes, @now, @playerid)";
+                                OleDbCommand cmd1 = new OleDbCommand();
 
-                            cmd1.Parameters.AddWithValue("@fileType", fileType);
-                            cmd1.Parameters.AddWithValue("@fname", fname);
-                            cmd1.Parameters.AddWithValue("@path", path); //alter as per your requirement
-                            cmd1.Parameters.AddWithValue("@FileBytes", FileBytes);
-                            cmd1.Parameters.AddWithValue("@now", now);
-                            cmd1.Parameters.AddWithValue("@playerid", playerid);
-                            cmd1.ExecuteNonQuery();
-                            myConnection.Close();
+                                cmd1.Connection = myConnection;
+                                cmd1.CommandType = CommandType.Text;
+                                cmd1.CommandText = "INSERT INTO GameObject(filetype ,ObjectName, path,[binarydata], DayAdded, ref_player_id) VALUES (@fileType,@fname, @path, @FileBytes, @now, @playerid)";
 
-                            //OpenConnection();
-                            //OleDbCommand cmd = new OleDbCommand();
-                            //cmd.Connection = myConnection;
-                            //cmd.CommandType = CommandType.Text;
-                            //cmd.CommandText = "INSERT INTO Categories(Cate_name, ref_object_id) VALUES (@fileType, @ObjectID)";
-                            //cmd.Parameters.AddWithValue("@fileName", fileType);
-                            //cmd.Parameters.AddWithValue("@ObjectID", ObjectID);
-                            //cmd.ExecuteNonQuery();
-                            //myConnection.Close();
-                            
-                            OpenConnection();
-                            int ObjectID = GetObjectID(fname, playerid);
-                            OleDbCommand cmd2 = new OleDbCommand();
-                            cmd2.Connection = myConnection;
-                            cmd2.CommandType = CommandType.Text;
-                            cmd2.CommandText = "INSERT INTO Metadata(Metadata_detail, ref_gameobject) VALUES (@fileName, @ObjectID)";
-                            cmd2.Parameters.AddWithValue("@fileName", fname);
-                            cmd2.Parameters.AddWithValue("@ObjectID", ObjectID);
-                            //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken);
-                            cmd2.ExecuteNonQuery();
-                            myConnection.Close();
+                                cmd1.Parameters.AddWithValue("@fileType", fileType);
+                                cmd1.Parameters.AddWithValue("@fname", fname);
+                                cmd1.Parameters.AddWithValue("@path", path); //alter as per your requirement
+                                cmd1.Parameters.AddWithValue("@FileBytes", FileBytes);
+                                cmd1.Parameters.AddWithValue("@now", now);
+                                cmd1.Parameters.AddWithValue("@playerid", playerid);
+                                cmd1.ExecuteNonQuery();
+                                myConnection.Close();
+
+                                //OpenConnection();
+                                //OleDbCommand cmd = new OleDbCommand();
+                                //cmd.Connection = myConnection;
+                                //cmd.CommandType = CommandType.Text;
+                                //cmd.CommandText = "INSERT INTO Categories(Cate_name, ref_object_id) VALUES (@fileType, @ObjectID)";
+                                //cmd.Parameters.AddWithValue("@fileName", fileType);
+                                //cmd.Parameters.AddWithValue("@ObjectID", ObjectID);
+                                //cmd.ExecuteNonQuery();
+                                //myConnection.Close();
+
+                                OpenConnection();
+                                int ObjectID = GetObjectID(fname, playerid);
+                                OleDbCommand cmd2 = new OleDbCommand();
+                                cmd2.Connection = myConnection;
+                                cmd2.CommandType = CommandType.Text;
+                                cmd2.CommandText = "INSERT INTO Metadata(Metadata_detail, ref_gameobject) VALUES (@fileName, @ObjectID)";
+                                cmd2.Parameters.AddWithValue("@fileName", fname);
+                                cmd2.Parameters.AddWithValue("@ObjectID", ObjectID);
+                                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken);
+                                cmd2.ExecuteNonQuery();
+                                myConnection.Close();
+                            }
+                            catch
+                            {
+                                MessageBox.Show("There are some problems when adding to database");
+                            }
                         }
                     }
                 }
@@ -372,16 +445,22 @@ namespace test1
         
         public void AddUserName(string userName)
         {
-            OpenConnection();
-            string ps = "";
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO player(Username, [Password]) VALUES (@name, @ps)";
-            cmd.Parameters.AddWithValue("@name", userName);
-            cmd.Parameters.AddWithValue("@ps", ps);
-            cmd.ExecuteNonQuery();
-            myConnection.Close();
+            try {
+                OpenConnection();
+                string ps = "";
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = myConnection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "INSERT INTO player(Username, [Password]) VALUES (@name, @ps)";
+                cmd.Parameters.AddWithValue("@name", userName);
+                cmd.Parameters.AddWithValue("@ps", ps);
+                cmd.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            catch
+            {
+
+            }
         }
 
         public static DateTime GetDateTakenFromImage(string path)
@@ -394,47 +473,53 @@ namespace test1
 
         public bool GetObject(int id)
         {
-            int i = 0;
-            int count = 0;
+            try {
+                int i = 0;
+                int count = 0;
 
-            OpenConnection();
-           
-            Random random = new Random();
-            OleDbCommand cmd;
-            cmd = new OleDbCommand("SELECT [binarydata] FROM GameObject where ref_player_id = " + @id, myConnection);
-            da = new OleDbDataAdapter(cmd);
-            da.Fill(dt);
-            ImageArray = new Image[dt.Rows.Count];
-            i = ImageArray.Length;
+                OpenConnection();
 
-            if (i != 0)
-            {
-                foreach (DataRow row in dt.Rows)
+                Random random = new Random();
+                OleDbCommand cmd;
+                cmd = new OleDbCommand("SELECT [binarydata] FROM GameObject where ref_player_id = " + @id, myConnection);
+                da = new OleDbDataAdapter(cmd);
+                da.Fill(dt);
+                ImageArray = new Image[dt.Rows.Count];
+                i = ImageArray.Length;
+
+                if (i != 0)
                 {
-                    if (dt.Rows[0]["binarydata"] != DBNull.Value)
+                    foreach (DataRow row in dt.Rows)
                     {
-                        ImageArray[count] = ByteArrayToImage((Byte[])row["binarydata"]);
-                        count++;
+                        if (dt.Rows[0]["binarydata"] != DBNull.Value)
+                        {
+                            ImageArray[count] = ByteArrayToImage((Byte[])row["binarydata"]);
+                            count++;
+                        }
                     }
-                }
 
-                Random number = new Random();
-                int num = 0;
-                while (num < 10)
-                {
-                    int randNum = random.Next(ImageArray.Length);
-                    bool check = images.Contains(ImageArray[randNum]);
-                    if (check == false)
+                    Random number = new Random();
+                    int num = 0;
+                    while (num < 10)
                     {
-                        images.Add(ImageArray[randNum]);
-                        images.Add(ImageArray[randNum]);
-                        num++;
+                        int randNum = random.Next(ImageArray.Length);
+                        bool check = images.Contains(ImageArray[randNum]);
+                        if (check == false)
+                        {
+                            images.Add(ImageArray[randNum]);
+                            images.Add(ImageArray[randNum]);
+                            num++;
+                        }
                     }
+                    myConnection.Close();
+                    return true;
                 }
-                myConnection.Close();
-                return true;
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch
             {
                 return false;
             }
@@ -442,34 +527,42 @@ namespace test1
        
         Bitmap ByteArrayToImage(byte[] b)
         {
-            MemoryStream ms = new MemoryStream();
-            byte[] pData = b;
-            ms.Write(pData, 0, Convert.ToInt32(pData.Length));
-            Bitmap bm = new Bitmap(ms, false);
-            ms.Dispose();
-            return bm;
+           
+                MemoryStream ms = new MemoryStream();
+                byte[] pData = b;
+                ms.Write(pData, 0, Convert.ToInt32(pData.Length));
+                Bitmap bm = new Bitmap(ms, false);
+                ms.Dispose();
+                return bm;
+           
         }
         public void GetListOfPlayer()
         {
-            OpenConnection();
-            OleDbCommand cmd = new OleDbCommand();
+            try {
+                OpenConnection();
+                OleDbCommand cmd = new OleDbCommand();
 
-            cmd.Connection = myConnection;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT Username FROM player";
-            OleDbDataReader reader = cmd.ExecuteReader();
+                cmd.Connection = myConnection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT Username FROM player";
+                OleDbDataReader reader = cmd.ExecuteReader();
 
-            //This method allows to control the reading of database response rows
-            bool notEoF;
-            //read first row from database
-            notEoF = reader.Read();
-            while (notEoF)//read row by row until the last row
-            {
-                string a = reader["Username"].ToString();
-                playerName.Add(reader["Username"].ToString());
+                //This method allows to control the reading of database response rows
+                bool notEoF;
+                //read first row from database
                 notEoF = reader.Read();
+                while (notEoF)//read row by row until the last row
+                {
+                    string a = reader["Username"].ToString();
+                    playerName.Add(reader["Username"].ToString());
+                    notEoF = reader.Read();
+                }
+                reader.Close();
             }
-            reader.Close();
+            catch
+            {
+
+            }
         }
 
         public List<string> ReturnPlayerName()

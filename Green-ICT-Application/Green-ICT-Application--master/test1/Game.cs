@@ -66,7 +66,7 @@ namespace test1
             return false;
             
         }
-        public void SetObject()
+        public void Upload()
         {
             string rePlayer = player1.GetPlayer();
             data.Upload(data.GetPlayerID(rePlayer));

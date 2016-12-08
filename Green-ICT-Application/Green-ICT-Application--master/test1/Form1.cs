@@ -178,7 +178,7 @@ namespace test1
 
         private void button7_Click(object sender, EventArgs e) //2 players upload
         {
-            game.SetObject();
+            game.Upload();
         }
 
         private void panel8_Click(object sender, EventArgs e)
@@ -189,7 +189,7 @@ namespace test1
 
         private void button10_Click(object sender, EventArgs e) // 1 player uploads
         {
-            game.SetObject();
+            game.Upload();
         }
 
         private void panel10_click(object sender, EventArgs e)
@@ -489,26 +489,19 @@ namespace test1
                 // clicked two different picturebox, so start the 
                 // timer (which will wait a second, and then hide)             
                 timer1.Start();
-
             }
-
         }
 
         private void timer1_click(object sender, EventArgs e)
         {
             timer1.Stop();
-            
-
             if (twoPlaying != false)
             {
-               
                 //Stop the timer
                 if (player1Playing)
                 {
                     if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
                     {
-                       
-                       
                         player1Scored = true;
                         game.AddToPlayer1Collection(firstClicked.BackgroundImage);
                         secondClicked.BackgroundImage = null;
@@ -639,7 +632,7 @@ namespace test1
                     panel12.Visible = true;
                 }
                 else
-                    MessageBox.Show("upload di dmm");
+                    MessageBox.Show("Please upload");
             }
             else
             {
@@ -660,7 +653,7 @@ namespace test1
                             panel12.Visible = true;
                         }
                         else
-                            MessageBox.Show("upload di dmm");
+                            MessageBox.Show("Please upload");
                     }
                     else
                         MessageBox.Show("Test");
