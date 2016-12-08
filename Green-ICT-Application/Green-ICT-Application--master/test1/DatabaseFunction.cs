@@ -429,7 +429,7 @@ namespace test1
                                 cmd2.CommandText = "INSERT INTO Metadata(Metadata_detail, ref_gameobject) VALUES (@fileName, @ObjectID)";
                                 cmd2.Parameters.AddWithValue("@fileName", fname);
                                 cmd2.Parameters.AddWithValue("@ObjectID", ObjectID);
-                                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken);
+                                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken); 
                                 cmd2.ExecuteNonQuery();
                                 myConnection.Close();
                             }

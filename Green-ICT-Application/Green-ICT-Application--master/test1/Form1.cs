@@ -86,12 +86,17 @@ namespace test1
 
         private void button1_Click(object sender, EventArgs e) //login
         {
+            
 
             WithOutLog = false;
             panel14.Visible = false;
             bool check = game.UserLogin(textBox1.Text, textBox2.Text);
             if (check != false)
             {
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button4.Enabled = false;
                 panel6.Visible = true;
                 label22.Text = textBox1.Text.ToUpper();
                 label25.Text = textBox1.Text.ToUpper();
@@ -100,12 +105,18 @@ namespace test1
 
         private void button2_Click(object sender, EventArgs e) //go to register page
         {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+         
             panel4.Visible = true;
         }
 
         private void button4_Click(object sender, EventArgs e) //register
         {
-
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
             if (textBox3.Text != "" && textBox4.Text != "" && textBox5.Text != "")
             {
                 bool check = game.UserRegister(textBox3.Text, textBox4.Text, textBox5.Text);
@@ -126,11 +137,18 @@ namespace test1
 
         private void panel5_click(object sender, MouseEventArgs e)
         {
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
             panel4.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e) //play without login
         {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
             panel6.Visible = true;
             panel14.Visible = true;
             WithOutLog = true;
@@ -595,6 +613,10 @@ namespace test1
 
         private void panel14_click(object sender, EventArgs e)
         {
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
             panel6.Visible = false;
             textBox3.Text = "";
             textBox4.Text = "";
