@@ -32,7 +32,7 @@ namespace test1
         private bool OpenConnection()
         {
             try {
-                connstr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\buigia\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\database\DatabaseGreenICT.mdb";
+                connstr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\database\DatabaseGreenICT.mdb";
                 //OleDbConnection requires namespace System.Data.OleDb
                 myConnection = new OleDbConnection(connstr);
                 myConnection.Open();
@@ -572,6 +572,72 @@ namespace test1
         public List<string> ReturnPlayerName()
         {
             return playerName;
+        }
+
+        public void GetMetadata()
+        {
+            try
+            {
+                OpenConnection();
+                OleDbCommand cmd = new OleDbCommand();
+
+                cmd.Connection = myConnection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT Metadata_detail FROM Metadata";
+                OleDbDataReader reader = cmd.ExecuteReader();
+
+                //This method allows to control the reading of database response rows
+                bool notEoF;
+                //read first row from database
+                notEoF = reader.Read();
+                while (notEoF)//read row by row until the last row
+                {
+                    string a = reader["Metadata_detail"].ToString();
+                    notEoF = reader.Read();
+                }
+                reader.Close();
+            }
+            catch
+            {
+                MessageBox.Show("There are some problems getting the metadata");
+            }
+
+        }
+
+        public void UpdateMetadata(string changedMetadata, int id)
+        {
+            try
+            {
+                OpenConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = myConnection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "UPDATE Metadata SET Metadata_detail =" + changedMetadata +  " WHERE ref_object_id = " + id;
+                cmd.ExecuteNonQuery();  //executing query
+                myConnection.Close();
+            }
+            catch
+            {
+                MessageBox.Show("There are some problems updating the metadata");
+            }
+        }
+
+        public void UpdatePassword(string changedPassword, string name)
+        {
+            try
+            {
+                OpenConnection();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = myConnection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "UPDATE player SET Password =" + changedPassword + " WHERE Username = " + name;
+                cmd.ExecuteNonQuery();  //executing query
+                myConnection.Close();
+            }
+            catch
+            {
+
+            }
         }
 
         public string CheckFile(string path)

@@ -70,3 +70,7 @@ C:\Users\buigia\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Applicatio
 C:\Users\buigia\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\bin\Debug\test1.application
 C:\Users\buigia\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.exe.manifest
 C:\Users\buigia\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.application
+C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\bin\Debug\test1.exe.manifest
+C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\bin\Debug\test1.application
+C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.exe.manifest
+C:\Users\dell 5558\Documents\GitHub\Green-ICT-Application-2016\Green-ICT-Application\Green-ICT-Application--master\test1\obj\Debug\test1.application
