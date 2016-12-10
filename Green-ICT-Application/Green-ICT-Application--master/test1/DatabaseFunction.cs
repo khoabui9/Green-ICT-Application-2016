@@ -16,8 +16,14 @@ using System.Drawing.Imaging;
 
 namespace test1
 {
-    class DatabaseFunction
+    class DatabaseFunction : File
     {
+        /// <summary> 
+        /// Database functions 
+        /// Get data
+        /// Insert data
+        /// Update data
+        /// </summary>
         private string connstr;
         private OleDbConnection myConnection;
         private OleDbDataAdapter da;
@@ -26,9 +32,9 @@ namespace test1
         private List<Image> images = new List<Image>();
         private List<string> playerName = new List<string>();
         private List<int> playerID = new List<int>();
-       
-
         private Image[] ImageArray;
+
+        /// <summary> Open connection with the database </summary>
         private bool OpenConnection()
         {
             try {
@@ -45,11 +51,35 @@ namespace test1
             }
         }
 
+        /// <summary>
+        /// New Game
+        /// </summary>
+        /// <param name="id">player id</param>
+        public void NewGame(int id)
+        {
+            OpenConnection();
+
+            OleDbCommand cmd = new OleDbCommand();
+            
+            cmd.Connection = myConnection;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "INSERT INTO  Game(ref_player1_id) values(@id);";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+            myConnection.Close();
+
+        }
+
         public List<Image> RetListOfObject()
         {
             return images;
         }
 
+        /// <summary>
+        /// Check if Username is taken or not
+        /// </summary>
+        /// <param name="username">User input username</param>
+        /// <returns>true if valid, false if not valid</returns>
         public bool CheckValidUserName(string username)
         {
             OpenConnection();
@@ -102,6 +132,13 @@ namespace test1
                 return false;
         }
 
+        /// <summary>
+        /// Add player to database
+        /// Add password with hashPassword.cs
+        /// </summary>
+        /// <param name="name">User input name</param>
+        /// <param name="username">User input username</param>
+        /// <param name="password">User input password</param>
         public void AddPlayer(string name, string username, string password)
         {
             try {
@@ -144,13 +181,18 @@ namespace test1
             }
         }
 
+        /// <summary>
+        /// User login
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool UserAuthentiacation(string username, string password)
         {
             try {
                 OpenConnection();
                 if (OpenConnection() == true)
                 {
-
                     OleDbCommand cmd = new OleDbCommand();
                     //string hashedPassword = PasswordHash.PasswordHash.CreateHash(password);
                     cmd.Connection = myConnection;
@@ -215,7 +257,12 @@ namespace test1
             }
         }
 
-
+        /// <summary>
+        /// Get player id from database
+        /// using username
+        /// </summary>
+        /// <param name="username">player username</param>
+        /// <returns></returns>
         public int GetPlayerID(string username)
         {
             try {
@@ -258,6 +305,13 @@ namespace test1
             }
         }
 
+        /// <summary>
+        /// Get object id from database
+        /// using object name and reference to player
+        /// </summary>
+        /// <param name="name">object name</param>
+        /// <param name="id">id of player that has the object</param>
+        /// <returns></returns>
         public int GetObjectID(string name, int id)
         {
             try {
@@ -301,6 +355,13 @@ namespace test1
             }
         }
 
+        /// <summary>
+        /// Check if object exist in database
+        /// if exist, will not record
+        /// </summary>
+        /// <param name="name">object name</param>
+        /// <param name="id">player id</param>
+        /// <returns></returns>
         public bool CheckObjectExist(string name, int id)
         {
             try {
@@ -353,6 +414,37 @@ namespace test1
            
         }
 
+        /// <summary>
+        /// Open file dialog to upload files
+        /// </summary>
+        /// <returns></returns>
+        public bool OpenFile()
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Multiselect = true;
+            openFile.Title = "select images";
+            openFile.Filter = "JPG Files|*.jpg|JPEG Files|*.jpeg|GIF|*.gif|PNG|*.png";
+            DialogResult result = openFile.ShowDialog();
+            if (openFile.FileNames.Length < 10)
+            {
+                MessageBox.Show("The minimum number of files allowed is 10");
+                return false;
+            }
+            else
+            {
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
+        /// <summary>
+        /// Upload Object to database
+        /// </summary>
+        /// <param name="playerid">Player id</param>
         public void Upload(int playerid)
         {
             OpenFileDialog openFile = new OpenFileDialog();
@@ -411,35 +503,14 @@ namespace test1
                                 cmd1.ExecuteNonQuery();
                                 myConnection.Close();
 
-                                //OpenConnection();
-                                //OleDbCommand cmd = new OleDbCommand();
-                                //cmd.Connection = myConnection;
-                                //cmd.CommandType = CommandType.Text;
-                                //cmd.CommandText = "INSERT INTO Categories(Cate_name, ref_object_id) VALUES (@fileType, @ObjectID)";
-                                //cmd.Parameters.AddWithValue("@fileName", fileType);
-                                //cmd.Parameters.AddWithValue("@ObjectID", ObjectID);
-                                //cmd.ExecuteNonQuery();
-                                //myConnection.Close();
-
                                 OpenConnection();
                                 int ObjectID = GetObjectID(fname, playerid);
-                                OleDbCommand cmd2 = new OleDbCommand();
-                                cmd2.Connection = myConnection;
-                                cmd2.CommandType = CommandType.Text;
-                                cmd2.CommandText = "INSERT INTO Metadata(Metadata_detail, ref_gameobject) VALUES (@fileName, @ObjectID)";
-                                cmd2.Parameters.AddWithValue("@fileName", fname); //add name because have not done the add detail part
-                                cmd2.Parameters.AddWithValue("@ObjectID", ObjectID);
-
-                                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken); 
-
-                                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken); //add datetaken (not all objet have)
-
-                                cmd2.ExecuteNonQuery();
+                                AddMetadata(fname, ObjectID);
                                 myConnection.Close();
                             }
                             catch
                             {
-                                MessageBox.Show("There are some problems when adding to database");
+                                
                             }
                         }
                     }
@@ -447,6 +518,39 @@ namespace test1
             }
         }
         
+        /// <summary>
+        /// add metadata to the database
+        /// add 
+        /// </summary>
+        /// <param name="fname"></param>
+        /// <param name="ObjectID">reference to object (object id)</param>
+        public void AddMetadata(string fname, int ObjectID)
+        {
+            try
+            {
+                OpenConnection();
+                OleDbCommand cmd2 = new OleDbCommand();
+                cmd2.Connection = myConnection;
+                cmd2.CommandType = CommandType.Text;
+                cmd2.CommandText = "INSERT INTO Metadata(Metadata_detail, ref_gameobject) VALUES (@fileName, @ObjectID)";
+                cmd2.Parameters.AddWithValue("@fileName", fname); //add name because have not done the add detail part
+                cmd2.Parameters.AddWithValue("@ObjectID", ObjectID);
+                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken); 
+                //cmd2.Parameters.AddWithValue("@ObjectID", dateTaken); //add datetaken (not all object have date taken data)
+                cmd2.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            catch
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// add only username
+        /// player who do not register - player without login
+        /// </summary>
+        /// <param name="userName">User input username</param>
         public void AddUserName(string userName)
         {
             try {
@@ -467,6 +571,11 @@ namespace test1
             }
         }
 
+        /// <summary>
+        /// Get date taken of image
+        /// </summary>
+        /// <param name="path">image path</param>
+        /// <returns>Date time in format</returns>
         public static DateTime GetDateTakenFromImage(string path)
         {
                 Image myImage = Image.FromFile(path);
@@ -475,6 +584,11 @@ namespace test1
                 return DateTime.Parse(dateTaken);
         }
 
+        /// <summary>
+        /// Get Object from database
+        /// </summary>
+        /// <param name="id">player id</param>
+        /// <returns></returns>
         public bool GetObject(int id)
         {
             try {
@@ -528,7 +642,11 @@ namespace test1
                 return false;
             }
         }
-       
+       /// <summary>
+       /// convert from byte to image
+       /// </summary>
+       /// <param name="b"></param>
+       /// <returns></returns>
         Bitmap ByteArrayToImage(byte[] b)
         {
            
@@ -540,6 +658,10 @@ namespace test1
                 return bm;
            
         }
+
+        /// <summary>
+        /// Get player list in database
+        /// </summary>
         public void GetListOfPlayer()
         {
             try {
@@ -574,6 +696,9 @@ namespace test1
             return playerName;
         }
 
+        /// <summary>
+        /// Get Metadata to show in report after playing game
+        /// </summary>
         public void GetMetadata()
         {
             try
@@ -604,6 +729,11 @@ namespace test1
 
         }
 
+        /// <summary>
+        /// Update metadata
+        /// </summary>
+        /// <param name="changedMetadata">User input changed metadata detail</param>
+        /// <param name="id"></param>
         public void UpdateMetadata(string changedMetadata, int id)
         {
             try
@@ -622,6 +752,11 @@ namespace test1
             }
         }
 
+        /// <summary>
+        /// Change password
+        /// </summary>
+        /// <param name="changedPassword"></param>
+        /// <param name="name"></param>
         public void UpdatePassword(string changedPassword, string name)
         {
             try
@@ -640,6 +775,11 @@ namespace test1
             }
         }
 
+        /// <summary>
+        /// Check file extension
+        /// </summary>
+        /// <param name="path">file path</param>
+        /// <returns>file type</returns>
         public string CheckFile(string path)
         {
             string s = Path.GetExtension(path);

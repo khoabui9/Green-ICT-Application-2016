@@ -16,7 +16,7 @@ using System.Drawing.Imaging;
 
 namespace test1
 {
-    //combox1, textbox6
+
     public partial class Form1 : Form
     {
         Game game;
@@ -27,15 +27,8 @@ namespace test1
         PictureBox secondClicked = null;
         bool WithOutLog;
         Regex rgx = new Regex(@"^[a-zA-Z0-9]+$");
-        int score1 = 0;
-        int score2 = 0;
-        bool player1Playing = true;
-        bool player2Playing = false;
         bool twoPlaying = false;
-        bool player1Scored = false;
-        bool player2Scored = false;
-        bool player1win = false;
-        bool player2Win = false;
+        
         
         public Form1()
         {
@@ -72,7 +65,6 @@ namespace test1
             Random random = new Random();
             foreach (Control control in tableLayoutPanel9.Controls)
             {
-
                 PictureBox pa = control as PictureBox;
                 if (pa != null)
                 {
@@ -83,16 +75,14 @@ namespace test1
                 }
             }
         }
-
         private void button1_Click(object sender, EventArgs e) //login
         {
-            
-
             WithOutLog = false;
             panel14.Visible = false;
             bool check = game.UserLogin(textBox1.Text, textBox2.Text);
             if (check != false)
             {
+                game.Gaming();
                 button1.Enabled = false;
                 button2.Enabled = false;
                 button3.Enabled = false;
@@ -101,6 +91,7 @@ namespace test1
                 label22.Text = textBox1.Text.ToUpper();
                 label25.Text = textBox1.Text.ToUpper();
             }
+            
         }
 
         private void button2_Click(object sender, EventArgs e) //go to register page
@@ -176,6 +167,7 @@ namespace test1
         private void button6_Click(object sender, EventArgs e) //2 players
         {
             twoPlaying = true;
+            game.checkTwoPlaying(twoPlaying);
             panel14.Visible = false;
             tableLayoutPanel11.Visible = true;
             if (comboBox1.Items.Count == 0 && comboBox2.Items.Count == 0 && comboBox3.Items.Count == 0 && comboBox4.Items.Count == 0)
@@ -282,7 +274,7 @@ namespace test1
                     panel12.Visible = true;
                 }
                 else
-                    MessageBox.Show("upload di dmm");
+                    MessageBox.Show("Please Upload");
             }
             else
             {
@@ -304,7 +296,7 @@ namespace test1
                             panel12.Visible = true;
                         }
                         else
-                            MessageBox.Show("upload di dmm");
+                            MessageBox.Show("Please Upload");
                     }
                 }
                 else
@@ -338,7 +330,7 @@ namespace test1
                         panel12.Visible = true;
                     }
                     else
-                        MessageBox.Show("upload di dmm");
+                        MessageBox.Show("Please Upload");
                 }
                 else
                 {
@@ -349,122 +341,6 @@ namespace test1
             {
                 MessageBox.Show("Choose different names");
             }
-            //if (a == "Choose Name" && textBox7.Text == "" && b == "Choose Name" && textBox8.Text == "")
-            //{
-            //    MessageBox.Show("please enter name for player ");
-            //}
-            //else
-            //{
-            //    if (a != "Choose Name" && b == "Choose Name" && textBox8.Text == "")
-            //    {
-            //        MessageBox.Show("Choose Name for player 2");
-            //    }
-            //    else if (b != "Choose Name"  && a == "Choose Name" && textBox7.Text == "")
-            //    {
-            //        MessageBox.Show("Choose Name for player 1");
-            //    } 
-            //    else if (a != "Choose Name" && textBox7.Text != "" && textBox8.Text != "")
-            //    {
-            //        bool check = game.withoutLoginPlay(textBox7.Text.Trim());
-            //        if (check != false)
-            //        {
-            //            images = game.ReList();
-            //            AssignPhoto();
-            //            panel2.Visible = true;
-            //            panel7.Visible = false;
-            //            panel9.Visible = false;
-            //            panel6.Visible = false;
-            //            panel12.Visible = true;
-            //        }
-            //        else
-            //            MessageBox.Show("upload di dmm");
-            //    }
-
-            //    else if (b != "Choose Name" && textBox7.Text != "" && textBox8.Text != "")
-            //    {
-            //        bool check = game.withoutLoginPlay(textBox7.Text.Trim());
-            //        if (check != false)
-            //        {
-            //            images = game.ReList();
-            //            AssignPhoto();
-            //            panel2.Visible = true;
-            //            panel7.Visible = false;
-            //            panel9.Visible = false;
-            //            panel6.Visible = false;
-            //            panel12.Visible = true;
-            //        }
-            //        else
-            //            MessageBox.Show("upload di dmm");
-            //    }
-
-            //    else if (textBox7.Text != "" && textBox8.Text != "")
-            //    {
-            //            bool check = game.withoutLoginPlay(textBox7.Text.Trim());
-            //            if (check != false)
-            //            {
-            //                images = game.ReList();
-            //                AssignPhoto();
-            //                panel2.Visible = true;
-            //                panel7.Visible = false;
-            //                panel9.Visible = false;
-            //                panel6.Visible = false;
-            //                panel12.Visible = true;
-            //            }
-            //            else
-            //                MessageBox.Show("upload di dmm");
-            //    }
-            //    else if (a != "Choose Name" && b!= "Choose Name")
-            //    {
-            //        bool check = game.withoutLoginPlay(a);
-            //        if (check != false)
-            //        {
-            //            images = game.ReList();
-            //            AssignPhoto();
-            //            panel2.Visible = true;
-            //            panel7.Visible = false;
-            //            panel9.Visible = false;
-            //            panel6.Visible = false;
-            //            panel12.Visible = true;
-            //        }
-            //        else
-            //            MessageBox.Show("upload di dmm");
-            //    }
-            //    else if (a != "Choose Name" && textBox8.Text != "")
-            //    {
-            //            bool check = game.withoutLoginPlay(a);
-            //            if (check != false)
-            //            {
-
-            //                images = game.ReList();
-            //                AssignPhoto();
-            //                panel2.Visible = true;
-            //                panel7.Visible = false;
-            //                panel9.Visible = false;
-            //                panel6.Visible = false;
-            //                panel12.Visible = true;
-            //            }
-            //            else
-            //                MessageBox.Show("upload di dmm");
-
-            //    }
-            //    else if (b != "Choose Name" && textBox7.Text != "")
-            //    {
-            //            bool check = game.withoutLoginPlay(b);
-            //            if (check != false)
-            //            {
-
-            //                images = game.ReList();
-            //                AssignPhoto();
-            //                panel2.Visible = true;
-            //                panel7.Visible = false;
-            //                panel9.Visible = false;
-            //                panel6.Visible = false;
-            //                panel12.Visible = true;
-            //            }
-            //            else
-            //                MessageBox.Show("upload di dmm");
-            //    }
-            //}
         }
 
         private void Picturebox_click(object sender, EventArgs e)
@@ -479,7 +355,6 @@ namespace test1
                 {
                     return;
                 }
-
                 // If firstClicked is null, this is the first pic 
                 // in the pair that the player clicked,
                 // so set firstClicked to the picturebox that the player 
@@ -513,99 +388,15 @@ namespace test1
         private void timer1_click(object sender, EventArgs e)
         {
             timer1.Stop();
-            if (twoPlaying != false)
-            {
-                //Stop the timer
-                if (player1Playing)
-                {
-                    if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
-                    {
-                        player1Scored = true;
-                        game.AddToPlayer1Collection(firstClicked.BackgroundImage);
-                        secondClicked.BackgroundImage = null;
-                        firstClicked.BackgroundImage = null;
-                        firstClicked = null;
-                        secondClicked = null;
-                        score1 += 1;
-                        label26.Text = score1.ToString();
-                        if (score1 > score2)
-                        {
-                            player1win = true;
-                            player2Win = false;
-                        }
-                        return;
-                    }
-                    else
-                    { // Hide both picImage
-                        firstClicked.Image = Properties.Resources._default;
-                        secondClicked.Image = Properties.Resources._default;
-                        player1Playing = false;
-                        player2Playing = true;
-                        MessageBox.Show("Player1 missed!\nPlayer2's turn!");
-                    }
-                }
-                else
-                {
-                    if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player2Playing)
-                    {
-                        player1win = false;
-                        player2Win = true;
-                        game.AddToPlayer2Collection(firstClicked.BackgroundImage);
-                        secondClicked.BackgroundImage = null;
-                        firstClicked.BackgroundImage = null;
-                        firstClicked = null;
-                        secondClicked = null;
-                        score2 += 1;
-                        label30.Text = score2.ToString();
-                        if (score1 < score2)
-                        {
-                            player1win = false;
-                            player2Win = true;
-                        }
-                        return;
-                    }
-                    else
-                    { // Hide both picImage
-                        firstClicked.Image = Properties.Resources._default;
-                        secondClicked.Image = Properties.Resources._default;
-                        player2Playing = false;
-                        player1Playing = true;
-                        MessageBox.Show("Player2 missed!\nPlayer1's turn!");
-                    }
-                }
-            }
-            else
-            {
-                if (firstClicked.BackgroundImage == secondClicked.BackgroundImage && player1Playing)
-                {
-                    //game.AddToPlayer1Collection(firstClicked.BackgroundImage);
-                    secondClicked.BackgroundImage = null;
-                    firstClicked.BackgroundImage = null;
-                    firstClicked = null;
-                    secondClicked = null;
-                    score1 += 1;
-                    label26.Text = score1.ToString();
-                    return;
-                }
-               
-                    firstClicked.Image = Properties.Resources._default;
-                    secondClicked.Image = Properties.Resources._default;
-                
-            }
-            // Reset firstClicked and secondClicked 
-            // so the next time a pictureBox is
-            // clicked, the program knows it's the first click       
-
-
+            game.Play(firstClicked, secondClicked, label26, label30);   
             firstClicked = null;
             secondClicked = null;
-
-
         }
 
         private void panel13_click(object sender, EventArgs e)
         {
             twoPlaying = false;
+            game.checkTwoPlaying(twoPlaying);
             panel11.Visible = false;
             if (WithOutLog)
                 panel14.Visible = true;
@@ -678,7 +469,7 @@ namespace test1
                             MessageBox.Show("Please upload");
                     }
                     else
-                        MessageBox.Show("Test");
+                        MessageBox.Show("Please press add");
                 }
 
                 else
@@ -725,17 +516,14 @@ namespace test1
                 {
                     Addchecking = true;
                     MessageBox.Show("Successfully added");
+                    button16.Enabled = false;
+                    textBox9.Enabled = false;
                 }
             }
             else
             {
                 MessageBox.Show("Enter Name");
             }
-        }
-
-        private void label27_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label29_Click(object sender, EventArgs e)
@@ -746,7 +534,7 @@ namespace test1
         private void CheckForWinner()
         {
 
-            // Go through all of the labels in the TableLayoutPanel, 
+            // Go through all of the pictureBox in the TableLayoutPanel, 
             // checking each one to see if its icon is matched
             foreach (Control control in tableLayoutPanel9.Controls)
             {
@@ -759,18 +547,7 @@ namespace test1
                 }
             }
 
-            // If the loop didn’t return, it didn't find
-            // any unmatched icons
-            // That means the user won. Show a message and close the form
-            if (twoPlaying == false)
-            MessageBox.Show("You matched all the icons!", "Congratulations");
-            else
-            {
-                if (player1win == true)
-                    MessageBox.Show("Player 1 win", "Congratulations");
-                else if (player2Win == true)
-                    MessageBox.Show("Player 2 win", "Congratulations");
-            }
+            game.checkWinner();
             
         }
     }
