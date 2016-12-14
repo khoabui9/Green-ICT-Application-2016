@@ -151,9 +151,9 @@ namespace test1
             else
             {
                 if (player1win == true)
-                    MessageBox.Show("Player 1 win", "Congratulations");
+                    MessageBox.Show("Player 1 win\n" + score1 + 1 + " score\n" + score1 + 1 + " Objects", "Congratulations");
                 else if (player2Win == true)
-                    MessageBox.Show("Player 2 win", "Congratulations");
+                    MessageBox.Show("Player 2 win\n" + score2 + 1 + " score\n" + score2 + 1 + " Objects", "Congratulations");
                 else if (draw == true)
                     MessageBox.Show("Test");
             }
