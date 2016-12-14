@@ -84,8 +84,7 @@ namespace test1
                 data.AddUserName(UserName);
                 return true;
             }
-            return false;
-            
+            return false; 
         }
 
         public void Upload()
@@ -261,6 +260,24 @@ namespace test1
         public void AddToPlayer2Collection(Image b)
         {
             player2Collection.Add(b);
+        }
+
+        public void AssignPhoto(TableLayoutPanel a)
+        {
+            
+
+            Random random = new Random();
+            foreach (Control control in a.Controls)
+            {
+                PictureBox pa = control as PictureBox;
+                if (pa != null)
+                {
+                    int randomNumber = random.Next(images.Count);
+                    pa.BackgroundImage = images[randomNumber];
+                    pa.SizeMode = PictureBoxSizeMode.StretchImage;
+                    images.RemoveAt(randomNumber);
+                }
+            }
         }
 
         public void PlayAgain(string player)

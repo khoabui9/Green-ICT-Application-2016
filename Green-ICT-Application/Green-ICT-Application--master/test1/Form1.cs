@@ -57,22 +57,21 @@ namespace test1
             comboBox4.SelectedItem = "Choose Name";
 
         }
-
-        private void AssignPhoto()
-        {
-            Random random = new Random();
-            foreach (Control control in tableLayoutPanel9.Controls)
-            {
-                PictureBox pa = control as PictureBox;
-                if (pa != null)
-                {
-                    int randomNumber = random.Next(images.Count);
-                    pa.BackgroundImage = images[randomNumber];
-                    pa.SizeMode = PictureBoxSizeMode.StretchImage;
-                    images.RemoveAt(randomNumber);
-                }
-            }
-        }
+        //private void AssignPhoto()
+        //{
+        //    Random random = new Random();
+        //    foreach (Control control in tableLayoutPanel9.Controls)
+        //    {
+        //        PictureBox pa = control as PictureBox;
+        //        if (pa != null)
+        //        {
+        //            int randomNumber = random.Next(images.Count);
+        //            pa.BackgroundImage = images[randomNumber];
+        //            pa.SizeMode = PictureBoxSizeMode.StretchImage;
+        //            images.RemoveAt(randomNumber);
+        //        }
+        //    } 
+        //}
         private void button1_Click(object sender, EventArgs e) //login
         {
             WithOutLog = false;
@@ -97,7 +96,6 @@ namespace test1
             button1.Enabled = false;
             button2.Enabled = false;
             button3.Enabled = false;
-         
             panel4.Visible = true;
         }
 
@@ -213,7 +211,7 @@ namespace test1
             if (check != false)
             {
                 images = game.ReList();
-                AssignPhoto();
+                game.AssignPhoto(tableLayoutPanel9);
                 panel2.Visible = true;
                 panel7.Visible = false;
                 panel9.Visible = false;
@@ -264,7 +262,7 @@ namespace test1
                 if (check != false)
                 {
                     images = game.ReList();
-                    AssignPhoto();
+                    game.AssignPhoto(tableLayoutPanel9);
                     panel2.Visible = true;
                     panel7.Visible = false;
                     panel9.Visible = false;
@@ -286,7 +284,7 @@ namespace test1
                         if (check != false)
                         {
                             images = game.ReList();
-                            AssignPhoto();
+                            game.AssignPhoto(tableLayoutPanel9);
                             panel2.Visible = true;
                             panel7.Visible = false;
                             panel9.Visible = false;
@@ -320,7 +318,7 @@ namespace test1
                         label25.Text = a;
                         label29.Text = b;
                         images = game.ReList();
-                        AssignPhoto();
+                        game.AssignPhoto(tableLayoutPanel9);
                         panel2.Visible = true;
                         panel7.Visible = false;
                         panel9.Visible = false;
@@ -416,10 +414,17 @@ namespace test1
             textBox2.Text = "";
         }
 
-        //private void button13_Click(object sender, EventArgs e) //start game / play again
-        //{
-
-        //}
+        private void button13_Click(object sender, EventArgs e) //start game / play again
+        {
+            foreach (Control control in tableLayoutPanel9.Controls)
+            {
+                PictureBox pa = control as PictureBox;   
+                pa.Image = Properties.Resources._default;
+            }
+            game.withoutLoginPlay(label23.Text);
+            images = game.ReList();
+            game.AssignPhoto(tableLayoutPanel9);
+        }
 
         private void panel16_click(object sender, EventArgs e)
         {
@@ -437,7 +442,7 @@ namespace test1
                 if (check != false)
                 {
                     images = game.ReList();
-                    AssignPhoto();
+                    game.AssignPhoto(tableLayoutPanel9);
                     panel2.Visible = true;
                     panel7.Visible = false;
                     panel9.Visible = false;
@@ -458,7 +463,7 @@ namespace test1
                         if (check != false)
                         {
                             images = game.ReList();
-                            AssignPhoto();
+                            game.AssignPhoto(tableLayoutPanel9);
                             panel2.Visible = true;
                             panel7.Visible = false;
                             panel9.Visible = false;
@@ -533,7 +538,6 @@ namespace test1
 
         private void CheckForWinner()
         {
-
             // Go through all of the pictureBox in the TableLayoutPanel, 
             // checking each one to see if its icon is matched
             foreach (Control control in tableLayoutPanel9.Controls)
@@ -546,9 +550,7 @@ namespace test1
                         return;
                 }
             }
-
-            game.checkWinner();
-            
-        }
+            game.checkWinner();           
+        } 
     }
 }
