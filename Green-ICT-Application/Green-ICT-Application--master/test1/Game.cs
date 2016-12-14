@@ -150,12 +150,23 @@ namespace test1
                 MessageBox.Show("You matched all the icons!", "Congratulations");
             else
             {
-                if (player1win == true)
-                    MessageBox.Show("Player 1 win\n" + score1 + 1 + " score\n" + score1 + 1 + " Objects", "Congratulations");
-                else if (player2Win == true)
-                    MessageBox.Show("Player 2 win\n" + score2 + 1 + " score\n" + score2 + 1 + " Objects", "Congratulations");
-                else if (draw == true)
-                    MessageBox.Show("Test");
+                if (score1 == score2)
+                {
+                    MessageBox.Show("Draw!");
+                }
+                else
+                {
+                    if (player1win == true)
+                    {
+
+                        MessageBox.Show("Player 1 win\n" + "scored " + score1 + "\n" + score1 + " Objects", "Congratulations");
+                    }
+                    else if (player2Win == true)
+                    {
+
+                        MessageBox.Show("Player 2 win\n" + "scored " + score2 + "\n" + score2 + " Objects", "Congratulations");
+                    }
+                }
             }
         }
 
@@ -181,8 +192,7 @@ namespace test1
                             player1win = true;
                             player2Win = false;
                         }
-                        else if (score1 == score2)
-                            draw = true;
+                       
                         return;
                     }
                     else
@@ -212,8 +222,7 @@ namespace test1
                             player1win = false;
                             player2Win = true;
                         }
-                        else if (score1 == score2)
-                            draw = true;
+                        
                         return;
                     }
                     else
@@ -254,6 +263,10 @@ namespace test1
             player2Collection.Add(b);
         }
 
+        public void PlayAgain(string player)
+        {
+
+        }
 
         public Player SwitchPlayer(bool check)
         {

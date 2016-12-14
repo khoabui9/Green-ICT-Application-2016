@@ -60,7 +60,6 @@ namespace test1
 
         private void AssignPhoto()
         {
-
             Random random = new Random();
             foreach (Control control in tableLayoutPanel9.Controls)
             {
@@ -376,20 +375,22 @@ namespace test1
                 // If the player clicked two matching icons, keep them 
                 // Image null and reset firstClicked and secondClicked  to null
                 // so the player can click another icon
-                CheckForWinner();
                 // If the player gets this far, the player 
                 // clicked two different picturebox, so start the 
                 // timer (which will wait a second, and then hide)             
                 timer1.Start();
+                
             }
         }
 
         private void timer1_click(object sender, EventArgs e)
         {
             timer1.Stop();
+            
             game.Play(firstClicked, secondClicked, label26, label30);   
             firstClicked = null;
             secondClicked = null;
+            CheckForWinner();
         }
 
         private void panel13_click(object sender, EventArgs e)
@@ -415,10 +416,10 @@ namespace test1
             textBox2.Text = "";
         }
 
-        private void button13_Click(object sender, EventArgs e) //start game
-        {
+        //private void button13_Click(object sender, EventArgs e) //start game / play again
+        //{
 
-        }
+        //}
 
         private void panel16_click(object sender, EventArgs e)
         {
