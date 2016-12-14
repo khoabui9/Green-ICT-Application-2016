@@ -19,7 +19,7 @@ namespace test1
 
     class GameObject
     {
-        List<Image> gameobject = new List<Image>();
+        private List<Image> gameobject = new List<Image>();
 
         public GameObject(List<Image> a)
         {

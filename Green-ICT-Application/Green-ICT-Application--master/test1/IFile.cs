@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace test1
 {
-    interface File
+    interface IFile
     {
         bool OpenFile();
     }

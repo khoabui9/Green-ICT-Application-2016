@@ -19,17 +19,16 @@ namespace test1
 
     public partial class Form1 : Form
     {
-        Game game;
-        bool Addchecking = false;
-        List<Image> images = new List<Image>();
-        List<string> playerList = new List<string>();
-        PictureBox firstClicked = null;
-        PictureBox secondClicked = null;
-        bool WithOutLog;
-        Regex rgx = new Regex(@"^[a-zA-Z0-9]+$");
-        bool twoPlaying = false;
-        
-        
+        private Game game;
+        private bool Addchecking = false;
+        private List<Image> images = new List<Image>();
+        private List<string> playerList = new List<string>();
+        private PictureBox firstClicked = null;
+        private PictureBox secondClicked = null;
+        private bool WithOutLog;
+        private Regex rgx = new Regex(@"^[a-zA-Z0-9]+$");
+        private bool twoPlaying = false;
+               
         public Form1()
         {
             InitializeComponent();
