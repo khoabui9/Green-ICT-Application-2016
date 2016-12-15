@@ -39,19 +39,14 @@ namespace test1
         private bool OpenConnection()
         {
             //string a = Application.UserAppDataPath;
-            try {
+           
                 //string path = Application.StartupPath;
                 connstr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\DatabaseGreenICT.mdb";
                 //OleDbConnection requires namespace System.Data.OleDb
                 myConnection = new OleDbConnection(connstr);
                 myConnection.Open();
                 return true;
-            }
-            catch
-            {
-                MessageBox.Show("Connection fail");
-                return false;
-            }
+          
         }
 
         /// <summary>
