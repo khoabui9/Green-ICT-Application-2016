@@ -421,7 +421,7 @@ namespace test1
                 PictureBox pa = control as PictureBox;   
                 pa.Image = Properties.Resources._default;
             }
-            game.withoutLoginPlay(label23.Text);
+            game.withoutLoginPlay(label25.Text);
             images = game.ReList();
             game.AssignPhoto(tableLayoutPanel9);
         }
