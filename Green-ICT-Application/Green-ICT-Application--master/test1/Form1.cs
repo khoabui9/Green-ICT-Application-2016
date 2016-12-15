@@ -441,6 +441,8 @@ namespace test1
                 bool check = game.withoutLoginPlay(a);
                 if (check != false)
                 {
+                    label25.Text = a.ToUpper(); 
+
                     images = game.ReList();
                     game.AssignPhoto(tableLayoutPanel9);
                     panel2.Visible = true;
@@ -462,6 +464,7 @@ namespace test1
                         bool check = game.withoutLoginPlay(textBox9.Text.Trim());
                         if (check != false)
                         {
+                            label25.Text = textBox9.Text.ToUpper(); 
                             images = game.ReList();
                             game.AssignPhoto(tableLayoutPanel9);
                             panel2.Visible = true;
@@ -482,9 +485,8 @@ namespace test1
                     MessageBox.Show("Enter name or choose name");
                 }
             }
-            label25.Text = a.ToUpper();
+            
         }
-
         private void button15_Click(object sender, EventArgs e) //withoutlogin upload
         {
             string a = comboBox4.GetItemText(comboBox4.SelectedItem);
