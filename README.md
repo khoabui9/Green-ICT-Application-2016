@@ -6,4 +6,4 @@ Project description: Task is to design and implement a traditional memory game a
 
 Role: Project manager, Programmer
 
-Using: C#, MySQL
+
